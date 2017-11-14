@@ -1,0 +1,1809 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Proyecto2Model.Store" Provider="Npgsql" ProviderManifestToken="9.6.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="cajas">
+          <Key>
+            <PropertyRef Name="idcaja" />
+          </Key>
+          <Property Name="idcaja" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechainicial" Type="date" Nullable="false" />
+          <Property Name="fechafinal" Type="date" Nullable="false" />
+          <Property Name="dineroinicial" Type="int4" Nullable="false" />
+          <Property Name="dinerofinal" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cajasxpersonas">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="idcaja" />
+          </Key>
+          <Property Name="idcedula" Type="int4" Nullable="false" />
+          <Property Name="idcaja" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cajasxsucursales">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+            <PropertyRef Name="idcaja" />
+          </Key>
+          <Property Name="idsucursal" Type="int4" Nullable="false" />
+          <Property Name="idcaja" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cantones">
+          <Key>
+            <PropertyRef Name="idcanton" />
+          </Key>
+          <Property Name="idcanton" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="cantonesxprovincias">
+          <Key>
+            <PropertyRef Name="idcanton" />
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idcanton" Type="int4" Nullable="false" />
+          <Property Name="idprovincia" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="companias">
+          <Key>
+            <PropertyRef Name="idcompania" />
+          </Key>
+          <Property Name="idcompania" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="distritos">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="distritosxcantones">
+          <Key>
+            <PropertyRef Name="idcanton" />
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="idcanton" Type="int4" Nullable="false" />
+          <Property Name="iddistrito" Type="int4" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facturas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+          </Key>
+          <Property Name="idfactura" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="date" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facturasxpersonas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+            <PropertyRef Name="idcedula" />
+          </Key>
+          <Property Name="idfactura" Type="int4" Nullable="false" />
+          <Property Name="idcedula" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="facturasxsucursales">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+            <PropertyRef Name="idfactura" />
+          </Key>
+          <Property Name="idsucursal" Type="int4" Nullable="false" />
+          <Property Name="idfactura" Type="int4" Nullable="false" />
+          <Property Name="numeroconsecutivo" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="formapagos">
+          <Key>
+            <PropertyRef Name="idformapago" />
+          </Key>
+          <Property Name="idformapago" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="formapagosxfacturas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+            <PropertyRef Name="idformapago" />
+          </Key>
+          <Property Name="idfactura" Type="int4" Nullable="false" />
+          <Property Name="idformapago" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personas">
+          <Key>
+            <PropertyRef Name="idcedula" />
+          </Key>
+          <Property Name="idcedula" Type="int4" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="apellido2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefono" Type="int4" Nullable="false" />
+          <Property Name="iddireccion" Type="int4" Nullable="false" />
+          <Property Name="fechanacimiento" Type="date" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personasxdistritos">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="idcedula" Type="int4" Nullable="false" />
+          <Property Name="iddistrito" Type="int4" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personasxsucursales">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idcedula" Type="int4" Nullable="false" />
+          <Property Name="idsucursal" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="idproducto" />
+          </Key>
+          <Property Name="idproducto" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="codigo_ean" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productosxfacturas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+            <PropertyRef Name="idproducto" />
+          </Key>
+          <Property Name="idfactura" Type="int4" Nullable="false" />
+          <Property Name="idproducto" Type="int4" Nullable="false" />
+          <Property Name="cantidad" Type="int4" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productosxproveedores">
+          <Key>
+            <PropertyRef Name="idproducto" />
+            <PropertyRef Name="idproveedor" />
+          </Key>
+          <Property Name="idproducto" Type="int4" Nullable="false" />
+          <Property Name="idproveedor" Type="int4" Nullable="false" />
+          <Property Name="precio" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productosxsucursales">
+          <Key>
+            <PropertyRef Name="idproducto" />
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idproducto" Type="int4" Nullable="false" />
+          <Property Name="idsucursal" Type="int4" Nullable="false" />
+          <Property Name="precio" Type="int4" Nullable="false" />
+          <Property Name="minimo" Type="int4" Nullable="false" />
+          <Property Name="promedio" Type="int4" Nullable="false" />
+          <Property Name="cantidadsucursal" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="idproveedor" />
+          </Key>
+          <Property Name="idproveedor" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="codigo_ean" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="provincias">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idrol" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" />
+          <Property Name="descripcion" Type="varchar" MaxLength="50" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="rolesxpersonas">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idcedula" Type="int4" Nullable="false" />
+          <Property Name="idrol" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sucursales">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idsucursal" Type="int4" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="iddireccion" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sucursalesxcompanias">
+          <Key>
+            <PropertyRef Name="idcompania" />
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idcompania" Type="int4" Nullable="false" />
+          <Property Name="idsucursal" Type="int4" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sucursalesxdistritos">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="idsucursal" Type="int4" Nullable="false" />
+          <Property Name="iddistrito" Type="int4" Nullable="false" />
+          <Property Name="direccion" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="logicdelete" Type="bool" Nullable="false" />
+        </EntityType>
+        <Association Name="fkcajasxpersonascajas">
+          <End Role="cajas" Type="Self.cajas" Multiplicity="1" />
+          <End Role="cajasxpersonas" Type="Self.cajasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajas">
+              <PropertyRef Name="idcaja" />
+            </Principal>
+            <Dependent Role="cajasxpersonas">
+              <PropertyRef Name="idcaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcajasxpersonaspersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="cajasxpersonas" Type="Self.cajasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="cajasxpersonas">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcajasxsucursalescajas">
+          <End Role="cajas" Type="Self.cajas" Multiplicity="1" />
+          <End Role="cajasxsucursales" Type="Self.cajasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajas">
+              <PropertyRef Name="idcaja" />
+            </Principal>
+            <Dependent Role="cajasxsucursales">
+              <PropertyRef Name="idcaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcajasxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="cajasxsucursales" Type="Self.cajasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="cajasxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcantonesxprovinciascantones">
+          <End Role="cantones" Type="Self.cantones" Multiplicity="1" />
+          <End Role="cantonesxprovincias" Type="Self.cantonesxprovincias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cantones">
+              <PropertyRef Name="idcanton" />
+            </Principal>
+            <Dependent Role="cantonesxprovincias">
+              <PropertyRef Name="idcanton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcantonesxprovinciasprovincias">
+          <End Role="provincias" Type="Self.provincias" Multiplicity="1" />
+          <End Role="cantonesxprovincias" Type="Self.cantonesxprovincias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="provincias">
+              <PropertyRef Name="idprovincia" />
+            </Principal>
+            <Dependent Role="cantonesxprovincias">
+              <PropertyRef Name="idprovincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkdistritosxcantonescantones">
+          <End Role="cantones" Type="Self.cantones" Multiplicity="1" />
+          <End Role="distritosxcantones" Type="Self.distritosxcantones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cantones">
+              <PropertyRef Name="idcanton" />
+            </Principal>
+            <Dependent Role="distritosxcantones">
+              <PropertyRef Name="idcanton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkdistritosxcantonesdistritos">
+          <End Role="distritos" Type="Self.distritos" Multiplicity="1" />
+          <End Role="distritosxcantones" Type="Self.distritosxcantones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distritos">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="distritosxcantones">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxpersonasfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="facturasxpersonas" Type="Self.facturasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="facturasxpersonas">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxpersonaspersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="facturasxpersonas" Type="Self.facturasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="facturasxpersonas">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxsucursalesfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="facturasxsucursales" Type="Self.facturasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="facturasxsucursales">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="facturasxsucursales" Type="Self.facturasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="facturasxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkformapagosxfacturasfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="formapagosxfacturas" Type="Self.formapagosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="formapagosxfacturas">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkformapagosxfacturasformapagos">
+          <End Role="formapagos" Type="Self.formapagos" Multiplicity="1" />
+          <End Role="formapagosxfacturas" Type="Self.formapagosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formapagos">
+              <PropertyRef Name="idformapago" />
+            </Principal>
+            <Dependent Role="formapagosxfacturas">
+              <PropertyRef Name="idformapago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxdistritosdistritos">
+          <End Role="distritos" Type="Self.distritos" Multiplicity="1" />
+          <End Role="personasxdistritos" Type="Self.personasxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distritos">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="personasxdistritos">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxdistritospersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="personasxdistritos" Type="Self.personasxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="personasxdistritos">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxsucursalespersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="personasxsucursales" Type="Self.personasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="personasxsucursales">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="personasxsucursales" Type="Self.personasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="personasxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxfacturasfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="productosxfacturas" Type="Self.productosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="productosxfacturas">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxfacturasproductos">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="productosxfacturas" Type="Self.productosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idproducto" />
+            </Principal>
+            <Dependent Role="productosxfacturas">
+              <PropertyRef Name="idproducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxproveedoresproductos">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="productosxproveedores" Type="Self.productosxproveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idproducto" />
+            </Principal>
+            <Dependent Role="productosxproveedores">
+              <PropertyRef Name="idproducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxproveedoresproveedores">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+          <End Role="productosxproveedores" Type="Self.productosxproveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="idproveedor" />
+            </Principal>
+            <Dependent Role="productosxproveedores">
+              <PropertyRef Name="idproveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxsucursalesproductos">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="productosxsucursales" Type="Self.productosxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idproducto" />
+            </Principal>
+            <Dependent Role="productosxsucursales">
+              <PropertyRef Name="idproducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="productosxsucursales" Type="Self.productosxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="productosxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkrolesxpersonaspersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="rolesxpersonas" Type="Self.rolesxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="rolesxpersonas">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkrolesxpersonasroles">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="rolesxpersonas" Type="Self.rolesxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="rolesxpersonas">
+              <PropertyRef Name="idrol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxcompaniascompanias">
+          <End Role="companias" Type="Self.companias" Multiplicity="1" />
+          <End Role="sucursalesxcompanias" Type="Self.sucursalesxcompanias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="companias">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="sucursalesxcompanias">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxcompaniassucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="sucursalesxcompanias" Type="Self.sucursalesxcompanias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="sucursalesxcompanias">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxdistritosdistritos">
+          <End Role="distritos" Type="Self.distritos" Multiplicity="1" />
+          <End Role="sucursalesxdistritos" Type="Self.sucursalesxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distritos">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="sucursalesxdistritos">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxdistritossucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="sucursalesxdistritos" Type="Self.sucursalesxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="sucursalesxdistritos">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Proyecto2ModelStoreContainer">
+          <EntitySet Name="cajas" EntityType="Self.cajas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="cajasxpersonas" EntityType="Self.cajasxpersonas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="cajasxsucursales" EntityType="Self.cajasxsucursales" Schema="public" store:Type="Tables" />
+          <EntitySet Name="cantones" EntityType="Self.cantones" Schema="public" store:Type="Tables" />
+          <EntitySet Name="cantonesxprovincias" EntityType="Self.cantonesxprovincias" Schema="public" store:Type="Tables" />
+          <EntitySet Name="companias" EntityType="Self.companias" Schema="public" store:Type="Tables" />
+          <EntitySet Name="distritos" EntityType="Self.distritos" Schema="public" store:Type="Tables" />
+          <EntitySet Name="distritosxcantones" EntityType="Self.distritosxcantones" Schema="public" store:Type="Tables" />
+          <EntitySet Name="facturas" EntityType="Self.facturas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="facturasxpersonas" EntityType="Self.facturasxpersonas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="facturasxsucursales" EntityType="Self.facturasxsucursales" Schema="public" store:Type="Tables" />
+          <EntitySet Name="formapagos" EntityType="Self.formapagos" Schema="public" store:Type="Tables" />
+          <EntitySet Name="formapagosxfacturas" EntityType="Self.formapagosxfacturas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="personas" EntityType="Self.personas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="personasxdistritos" EntityType="Self.personasxdistritos" Schema="public" store:Type="Tables" />
+          <EntitySet Name="personasxsucursales" EntityType="Self.personasxsucursales" Schema="public" store:Type="Tables" />
+          <EntitySet Name="productos" EntityType="Self.productos" Schema="public" store:Type="Tables" />
+          <EntitySet Name="productosxfacturas" EntityType="Self.productosxfacturas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="productosxproveedores" EntityType="Self.productosxproveedores" Schema="public" store:Type="Tables" />
+          <EntitySet Name="productosxsucursales" EntityType="Self.productosxsucursales" Schema="public" store:Type="Tables" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedores" Schema="public" store:Type="Tables" />
+          <EntitySet Name="provincias" EntityType="Self.provincias" Schema="public" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="public" store:Type="Tables" />
+          <EntitySet Name="rolesxpersonas" EntityType="Self.rolesxpersonas" Schema="public" store:Type="Tables" />
+          <EntitySet Name="sucursales" EntityType="Self.sucursales" Schema="public" store:Type="Tables" />
+          <EntitySet Name="sucursalesxcompanias" EntityType="Self.sucursalesxcompanias" Schema="public" store:Type="Tables" />
+          <EntitySet Name="sucursalesxdistritos" EntityType="Self.sucursalesxdistritos" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="fkcajasxpersonascajas" Association="Self.fkcajasxpersonascajas">
+            <End Role="cajas" EntitySet="cajas" />
+            <End Role="cajasxpersonas" EntitySet="cajasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkcajasxpersonaspersonas" Association="Self.fkcajasxpersonaspersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="cajasxpersonas" EntitySet="cajasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkcajasxsucursalescajas" Association="Self.fkcajasxsucursalescajas">
+            <End Role="cajas" EntitySet="cajas" />
+            <End Role="cajasxsucursales" EntitySet="cajasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkcajasxsucursalessucursales" Association="Self.fkcajasxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="cajasxsucursales" EntitySet="cajasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkcantonesxprovinciascantones" Association="Self.fkcantonesxprovinciascantones">
+            <End Role="cantones" EntitySet="cantones" />
+            <End Role="cantonesxprovincias" EntitySet="cantonesxprovincias" />
+          </AssociationSet>
+          <AssociationSet Name="fkcantonesxprovinciasprovincias" Association="Self.fkcantonesxprovinciasprovincias">
+            <End Role="provincias" EntitySet="provincias" />
+            <End Role="cantonesxprovincias" EntitySet="cantonesxprovincias" />
+          </AssociationSet>
+          <AssociationSet Name="fkdistritosxcantonescantones" Association="Self.fkdistritosxcantonescantones">
+            <End Role="cantones" EntitySet="cantones" />
+            <End Role="distritosxcantones" EntitySet="distritosxcantones" />
+          </AssociationSet>
+          <AssociationSet Name="fkdistritosxcantonesdistritos" Association="Self.fkdistritosxcantonesdistritos">
+            <End Role="distritos" EntitySet="distritos" />
+            <End Role="distritosxcantones" EntitySet="distritosxcantones" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxpersonasfacturas" Association="Self.fkfacturasxpersonasfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="facturasxpersonas" EntitySet="facturasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxpersonaspersonas" Association="Self.fkfacturasxpersonaspersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="facturasxpersonas" EntitySet="facturasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxsucursalesfacturas" Association="Self.fkfacturasxsucursalesfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="facturasxsucursales" EntitySet="facturasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxsucursalessucursales" Association="Self.fkfacturasxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="facturasxsucursales" EntitySet="facturasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkformapagosxfacturasfacturas" Association="Self.fkformapagosxfacturasfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="formapagosxfacturas" EntitySet="formapagosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkformapagosxfacturasformapagos" Association="Self.fkformapagosxfacturasformapagos">
+            <End Role="formapagos" EntitySet="formapagos" />
+            <End Role="formapagosxfacturas" EntitySet="formapagosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxdistritosdistritos" Association="Self.fkpersonasxdistritosdistritos">
+            <End Role="distritos" EntitySet="distritos" />
+            <End Role="personasxdistritos" EntitySet="personasxdistritos" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxdistritospersonas" Association="Self.fkpersonasxdistritospersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personasxdistritos" EntitySet="personasxdistritos" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxsucursalespersonas" Association="Self.fkpersonasxsucursalespersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personasxsucursales" EntitySet="personasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxsucursalessucursales" Association="Self.fkpersonasxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="personasxsucursales" EntitySet="personasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxfacturasfacturas" Association="Self.fkproductosxfacturasfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="productosxfacturas" EntitySet="productosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxfacturasproductos" Association="Self.fkproductosxfacturasproductos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="productosxfacturas" EntitySet="productosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxproveedoresproductos" Association="Self.fkproductosxproveedoresproductos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="productosxproveedores" EntitySet="productosxproveedores" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxproveedoresproveedores" Association="Self.fkproductosxproveedoresproveedores">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="productosxproveedores" EntitySet="productosxproveedores" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxsucursalesproductos" Association="Self.fkproductosxsucursalesproductos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="productosxsucursales" EntitySet="productosxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxsucursalessucursales" Association="Self.fkproductosxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="productosxsucursales" EntitySet="productosxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkrolesxpersonaspersonas" Association="Self.fkrolesxpersonaspersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="rolesxpersonas" EntitySet="rolesxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkrolesxpersonasroles" Association="Self.fkrolesxpersonasroles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="rolesxpersonas" EntitySet="rolesxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxcompaniascompanias" Association="Self.fksucursalesxcompaniascompanias">
+            <End Role="companias" EntitySet="companias" />
+            <End Role="sucursalesxcompanias" EntitySet="sucursalesxcompanias" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxcompaniassucursales" Association="Self.fksucursalesxcompaniassucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="sucursalesxcompanias" EntitySet="sucursalesxcompanias" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxdistritosdistritos" Association="Self.fksucursalesxdistritosdistritos">
+            <End Role="distritos" EntitySet="distritos" />
+            <End Role="sucursalesxdistritos" EntitySet="sucursalesxdistritos" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxdistritossucursales" Association="Self.fksucursalesxdistritossucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="sucursalesxdistritos" EntitySet="sucursalesxdistritos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Proyecto2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="cajas">
+          <Key>
+            <PropertyRef Name="idcaja" />
+          </Key>
+          <Property Name="idcaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechainicial" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="fechafinal" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="dineroinicial" Type="Int32" Nullable="false" />
+          <Property Name="dinerofinal" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cajasxpersonas" Relationship="Self.fkcajasxpersonascajas" FromRole="cajas" ToRole="cajasxpersonas" />
+          <NavigationProperty Name="cajasxsucursales" Relationship="Self.fkcajasxsucursalescajas" FromRole="cajas" ToRole="cajasxsucursales" />
+        </EntityType>
+        <EntityType Name="cajasxpersonas">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="idcaja" />
+          </Key>
+          <Property Name="idcedula" Type="Int32" Nullable="false" />
+          <Property Name="idcaja" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cajas" Relationship="Self.fkcajasxpersonascajas" FromRole="cajasxpersonas" ToRole="cajas" />
+          <NavigationProperty Name="personas" Relationship="Self.fkcajasxpersonaspersonas" FromRole="cajasxpersonas" ToRole="personas" />
+        </EntityType>
+        <EntityType Name="cajasxsucursales">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+            <PropertyRef Name="idcaja" />
+          </Key>
+          <Property Name="idsucursal" Type="Int32" Nullable="false" />
+          <Property Name="idcaja" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cajas" Relationship="Self.fkcajasxsucursalescajas" FromRole="cajasxsucursales" ToRole="cajas" />
+          <NavigationProperty Name="sucursales" Relationship="Self.fkcajasxsucursalessucursales" FromRole="cajasxsucursales" ToRole="sucursales" />
+        </EntityType>
+        <EntityType Name="cantones">
+          <Key>
+            <PropertyRef Name="idcanton" />
+          </Key>
+          <Property Name="idcanton" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="provincias" Relationship="Self.cantonesxprovincias" FromRole="cantones" ToRole="provincias" />
+          <NavigationProperty Name="distritos" Relationship="Self.distritosxcantones" FromRole="cantones" ToRole="distritos" />
+        </EntityType>
+        <EntityType Name="companias">
+          <Key>
+            <PropertyRef Name="idcompania" />
+          </Key>
+          <Property Name="idcompania" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="sucursalesxcompanias" Relationship="Self.fksucursalesxcompaniascompanias" FromRole="companias" ToRole="sucursalesxcompanias" />
+        </EntityType>
+        <EntityType Name="distritos">
+          <Key>
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="iddistrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="personasxdistritos" Relationship="Self.fkpersonasxdistritosdistritos" FromRole="distritos" ToRole="personasxdistritos" />
+          <NavigationProperty Name="sucursalesxdistritos" Relationship="Self.fksucursalesxdistritosdistritos" FromRole="distritos" ToRole="sucursalesxdistritos" />
+          <NavigationProperty Name="cantones" Relationship="Self.distritosxcantones" FromRole="distritos" ToRole="cantones" />
+        </EntityType>
+        <EntityType Name="facturas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+          </Key>
+          <Property Name="idfactura" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="facturasxpersonas" Relationship="Self.fkfacturasxpersonasfacturas" FromRole="facturas" ToRole="facturasxpersonas" />
+          <NavigationProperty Name="facturasxsucursales" Relationship="Self.fkfacturasxsucursalesfacturas" FromRole="facturas" ToRole="facturasxsucursales" />
+          <NavigationProperty Name="formapagosxfacturas" Relationship="Self.fkformapagosxfacturasfacturas" FromRole="facturas" ToRole="formapagosxfacturas" />
+          <NavigationProperty Name="productosxfacturas" Relationship="Self.fkproductosxfacturasfacturas" FromRole="facturas" ToRole="productosxfacturas" />
+        </EntityType>
+        <EntityType Name="facturasxpersonas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+            <PropertyRef Name="idcedula" />
+          </Key>
+          <Property Name="idfactura" Type="Int32" Nullable="false" />
+          <Property Name="idcedula" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="facturas" Relationship="Self.fkfacturasxpersonasfacturas" FromRole="facturasxpersonas" ToRole="facturas" />
+          <NavigationProperty Name="personas" Relationship="Self.fkfacturasxpersonaspersonas" FromRole="facturasxpersonas" ToRole="personas" />
+        </EntityType>
+        <EntityType Name="facturasxsucursales">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+            <PropertyRef Name="idfactura" />
+          </Key>
+          <Property Name="idsucursal" Type="Int32" Nullable="false" />
+          <Property Name="idfactura" Type="Int32" Nullable="false" />
+          <Property Name="numeroconsecutivo" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="facturas" Relationship="Self.fkfacturasxsucursalesfacturas" FromRole="facturasxsucursales" ToRole="facturas" />
+          <NavigationProperty Name="sucursales" Relationship="Self.fkfacturasxsucursalessucursales" FromRole="facturasxsucursales" ToRole="sucursales" />
+        </EntityType>
+        <EntityType Name="formapagos">
+          <Key>
+            <PropertyRef Name="idformapago" />
+          </Key>
+          <Property Name="idformapago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="formapagosxfacturas" Relationship="Self.fkformapagosxfacturasformapagos" FromRole="formapagos" ToRole="formapagosxfacturas" />
+        </EntityType>
+        <EntityType Name="formapagosxfacturas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+            <PropertyRef Name="idformapago" />
+          </Key>
+          <Property Name="idfactura" Type="Int32" Nullable="false" />
+          <Property Name="idformapago" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="facturas" Relationship="Self.fkformapagosxfacturasfacturas" FromRole="formapagosxfacturas" ToRole="facturas" />
+          <NavigationProperty Name="formapagos" Relationship="Self.fkformapagosxfacturasformapagos" FromRole="formapagosxfacturas" ToRole="formapagos" />
+        </EntityType>
+        <EntityType Name="personas">
+          <Key>
+            <PropertyRef Name="idcedula" />
+          </Key>
+          <Property Name="idcedula" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="apellido2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="telefono" Type="Int32" Nullable="false" />
+          <Property Name="iddireccion" Type="Int32" Nullable="false" />
+          <Property Name="fechanacimiento" Type="DateTime" Precision="0" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cajasxpersonas" Relationship="Self.fkcajasxpersonaspersonas" FromRole="personas" ToRole="cajasxpersonas" />
+          <NavigationProperty Name="facturasxpersonas" Relationship="Self.fkfacturasxpersonaspersonas" FromRole="personas" ToRole="facturasxpersonas" />
+          <NavigationProperty Name="personasxdistritos" Relationship="Self.fkpersonasxdistritospersonas" FromRole="personas" ToRole="personasxdistritos" />
+          <NavigationProperty Name="personasxsucursales" Relationship="Self.fkpersonasxsucursalespersonas" FromRole="personas" ToRole="personasxsucursales" />
+          <NavigationProperty Name="rolesxpersonas" Relationship="Self.fkrolesxpersonaspersonas" FromRole="personas" ToRole="rolesxpersonas" />
+        </EntityType>
+        <EntityType Name="personasxdistritos">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="idcedula" Type="Int32" Nullable="false" />
+          <Property Name="iddistrito" Type="Int32" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="distritos" Relationship="Self.fkpersonasxdistritosdistritos" FromRole="personasxdistritos" ToRole="distritos" />
+          <NavigationProperty Name="personas" Relationship="Self.fkpersonasxdistritospersonas" FromRole="personasxdistritos" ToRole="personas" />
+        </EntityType>
+        <EntityType Name="personasxsucursales">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idcedula" Type="Int32" Nullable="false" />
+          <Property Name="idsucursal" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="personas" Relationship="Self.fkpersonasxsucursalespersonas" FromRole="personasxsucursales" ToRole="personas" />
+          <NavigationProperty Name="sucursales" Relationship="Self.fkpersonasxsucursalessucursales" FromRole="personasxsucursales" ToRole="sucursales" />
+        </EntityType>
+        <EntityType Name="productos">
+          <Key>
+            <PropertyRef Name="idproducto" />
+          </Key>
+          <Property Name="idproducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_ean" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="productosxfacturas" Relationship="Self.fkproductosxfacturasproductos" FromRole="productos" ToRole="productosxfacturas" />
+          <NavigationProperty Name="productosxproveedores" Relationship="Self.fkproductosxproveedoresproductos" FromRole="productos" ToRole="productosxproveedores" />
+          <NavigationProperty Name="productosxsucursales" Relationship="Self.fkproductosxsucursalesproductos" FromRole="productos" ToRole="productosxsucursales" />
+        </EntityType>
+        <EntityType Name="productosxfacturas">
+          <Key>
+            <PropertyRef Name="idfactura" />
+            <PropertyRef Name="idproducto" />
+          </Key>
+          <Property Name="idfactura" Type="Int32" Nullable="false" />
+          <Property Name="idproducto" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="facturas" Relationship="Self.fkproductosxfacturasfacturas" FromRole="productosxfacturas" ToRole="facturas" />
+          <NavigationProperty Name="productos" Relationship="Self.fkproductosxfacturasproductos" FromRole="productosxfacturas" ToRole="productos" />
+        </EntityType>
+        <EntityType Name="productosxproveedores">
+          <Key>
+            <PropertyRef Name="idproducto" />
+            <PropertyRef Name="idproveedor" />
+          </Key>
+          <Property Name="idproducto" Type="Int32" Nullable="false" />
+          <Property Name="idproveedor" Type="Int32" Nullable="false" />
+          <Property Name="precio" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="productos" Relationship="Self.fkproductosxproveedoresproductos" FromRole="productosxproveedores" ToRole="productos" />
+          <NavigationProperty Name="proveedores" Relationship="Self.fkproductosxproveedoresproveedores" FromRole="productosxproveedores" ToRole="proveedores" />
+        </EntityType>
+        <EntityType Name="productosxsucursales">
+          <Key>
+            <PropertyRef Name="idproducto" />
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idproducto" Type="Int32" Nullable="false" />
+          <Property Name="idsucursal" Type="Int32" Nullable="false" />
+          <Property Name="precio" Type="Int32" Nullable="false" />
+          <Property Name="minimo" Type="Int32" Nullable="false" />
+          <Property Name="promedio" Type="Int32" Nullable="false" />
+          <Property Name="cantidadsucursal" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="productos" Relationship="Self.fkproductosxsucursalesproductos" FromRole="productosxsucursales" ToRole="productos" />
+          <NavigationProperty Name="sucursales" Relationship="Self.fkproductosxsucursalessucursales" FromRole="productosxsucursales" ToRole="sucursales" />
+        </EntityType>
+        <EntityType Name="proveedores">
+          <Key>
+            <PropertyRef Name="idproveedor" />
+          </Key>
+          <Property Name="idproveedor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="codigo_ean" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="productosxproveedores" Relationship="Self.fkproductosxproveedoresproveedores" FromRole="proveedores" ToRole="productosxproveedores" />
+        </EntityType>
+        <EntityType Name="provincias">
+          <Key>
+            <PropertyRef Name="idprovincia" />
+          </Key>
+          <Property Name="idprovincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="cantones" Relationship="Self.cantonesxprovincias" FromRole="provincias" ToRole="cantones" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idrol" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="rolesxpersonas" Relationship="Self.fkrolesxpersonasroles" FromRole="roles" ToRole="rolesxpersonas" />
+        </EntityType>
+        <EntityType Name="rolesxpersonas">
+          <Key>
+            <PropertyRef Name="idcedula" />
+            <PropertyRef Name="idrol" />
+          </Key>
+          <Property Name="idcedula" Type="Int32" Nullable="false" />
+          <Property Name="idrol" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="personas" Relationship="Self.fkrolesxpersonaspersonas" FromRole="rolesxpersonas" ToRole="personas" />
+          <NavigationProperty Name="roles" Relationship="Self.fkrolesxpersonasroles" FromRole="rolesxpersonas" ToRole="roles" />
+        </EntityType>
+        <EntityType Name="sucursales">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idsucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="iddireccion" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cajasxsucursales" Relationship="Self.fkcajasxsucursalessucursales" FromRole="sucursales" ToRole="cajasxsucursales" />
+          <NavigationProperty Name="facturasxsucursales" Relationship="Self.fkfacturasxsucursalessucursales" FromRole="sucursales" ToRole="facturasxsucursales" />
+          <NavigationProperty Name="personasxsucursales" Relationship="Self.fkpersonasxsucursalessucursales" FromRole="sucursales" ToRole="personasxsucursales" />
+          <NavigationProperty Name="productosxsucursales" Relationship="Self.fkproductosxsucursalessucursales" FromRole="sucursales" ToRole="productosxsucursales" />
+          <NavigationProperty Name="sucursalesxcompanias" Relationship="Self.fksucursalesxcompaniassucursales" FromRole="sucursales" ToRole="sucursalesxcompanias" />
+          <NavigationProperty Name="sucursalesxdistritos" Relationship="Self.fksucursalesxdistritossucursales" FromRole="sucursales" ToRole="sucursalesxdistritos" />
+        </EntityType>
+        <EntityType Name="sucursalesxcompanias">
+          <Key>
+            <PropertyRef Name="idcompania" />
+            <PropertyRef Name="idsucursal" />
+          </Key>
+          <Property Name="idcompania" Type="Int32" Nullable="false" />
+          <Property Name="idsucursal" Type="Int32" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="companias" Relationship="Self.fksucursalesxcompaniascompanias" FromRole="sucursalesxcompanias" ToRole="companias" />
+          <NavigationProperty Name="sucursales" Relationship="Self.fksucursalesxcompaniassucursales" FromRole="sucursalesxcompanias" ToRole="sucursales" />
+        </EntityType>
+        <EntityType Name="sucursalesxdistritos">
+          <Key>
+            <PropertyRef Name="idsucursal" />
+            <PropertyRef Name="iddistrito" />
+          </Key>
+          <Property Name="idsucursal" Type="Int32" Nullable="false" />
+          <Property Name="iddistrito" Type="Int32" Nullable="false" />
+          <Property Name="direccion" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="logicdelete" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="distritos" Relationship="Self.fksucursalesxdistritosdistritos" FromRole="sucursalesxdistritos" ToRole="distritos" />
+          <NavigationProperty Name="sucursales" Relationship="Self.fksucursalesxdistritossucursales" FromRole="sucursalesxdistritos" ToRole="sucursales" />
+        </EntityType>
+        <Association Name="fkcajasxpersonascajas">
+          <End Role="cajas" Type="Self.cajas" Multiplicity="1" />
+          <End Role="cajasxpersonas" Type="Self.cajasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajas">
+              <PropertyRef Name="idcaja" />
+            </Principal>
+            <Dependent Role="cajasxpersonas">
+              <PropertyRef Name="idcaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcajasxsucursalescajas">
+          <End Role="cajas" Type="Self.cajas" Multiplicity="1" />
+          <End Role="cajasxsucursales" Type="Self.cajasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cajas">
+              <PropertyRef Name="idcaja" />
+            </Principal>
+            <Dependent Role="cajasxsucursales">
+              <PropertyRef Name="idcaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcajasxpersonaspersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="cajasxpersonas" Type="Self.cajasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="cajasxpersonas">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkcajasxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="cajasxsucursales" Type="Self.cajasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="cajasxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxcompaniascompanias">
+          <End Role="companias" Type="Self.companias" Multiplicity="1" />
+          <End Role="sucursalesxcompanias" Type="Self.sucursalesxcompanias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="companias">
+              <PropertyRef Name="idcompania" />
+            </Principal>
+            <Dependent Role="sucursalesxcompanias">
+              <PropertyRef Name="idcompania" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxdistritosdistritos">
+          <End Role="distritos" Type="Self.distritos" Multiplicity="1" />
+          <End Role="personasxdistritos" Type="Self.personasxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distritos">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="personasxdistritos">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxdistritosdistritos">
+          <End Role="distritos" Type="Self.distritos" Multiplicity="1" />
+          <End Role="sucursalesxdistritos" Type="Self.sucursalesxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="distritos">
+              <PropertyRef Name="iddistrito" />
+            </Principal>
+            <Dependent Role="sucursalesxdistritos">
+              <PropertyRef Name="iddistrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxpersonasfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="facturasxpersonas" Type="Self.facturasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="facturasxpersonas">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxsucursalesfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="facturasxsucursales" Type="Self.facturasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="facturasxsucursales">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkformapagosxfacturasfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="formapagosxfacturas" Type="Self.formapagosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="formapagosxfacturas">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxfacturasfacturas">
+          <End Role="facturas" Type="Self.facturas" Multiplicity="1" />
+          <End Role="productosxfacturas" Type="Self.productosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="facturas">
+              <PropertyRef Name="idfactura" />
+            </Principal>
+            <Dependent Role="productosxfacturas">
+              <PropertyRef Name="idfactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxpersonaspersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="facturasxpersonas" Type="Self.facturasxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="facturasxpersonas">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkfacturasxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="facturasxsucursales" Type="Self.facturasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="facturasxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkformapagosxfacturasformapagos">
+          <End Role="formapagos" Type="Self.formapagos" Multiplicity="1" />
+          <End Role="formapagosxfacturas" Type="Self.formapagosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="formapagos">
+              <PropertyRef Name="idformapago" />
+            </Principal>
+            <Dependent Role="formapagosxfacturas">
+              <PropertyRef Name="idformapago" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxdistritospersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="personasxdistritos" Type="Self.personasxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="personasxdistritos">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxsucursalespersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="personasxsucursales" Type="Self.personasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="personasxsucursales">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkrolesxpersonaspersonas">
+          <End Role="personas" Type="Self.personas" Multiplicity="1" />
+          <End Role="rolesxpersonas" Type="Self.rolesxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personas">
+              <PropertyRef Name="idcedula" />
+            </Principal>
+            <Dependent Role="rolesxpersonas">
+              <PropertyRef Name="idcedula" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkpersonasxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="personasxsucursales" Type="Self.personasxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="personasxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxfacturasproductos">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="productosxfacturas" Type="Self.productosxfacturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idproducto" />
+            </Principal>
+            <Dependent Role="productosxfacturas">
+              <PropertyRef Name="idproducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxproveedoresproductos">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="productosxproveedores" Type="Self.productosxproveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idproducto" />
+            </Principal>
+            <Dependent Role="productosxproveedores">
+              <PropertyRef Name="idproducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxsucursalesproductos">
+          <End Role="productos" Type="Self.productos" Multiplicity="1" />
+          <End Role="productosxsucursales" Type="Self.productosxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productos">
+              <PropertyRef Name="idproducto" />
+            </Principal>
+            <Dependent Role="productosxsucursales">
+              <PropertyRef Name="idproducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxproveedoresproveedores">
+          <End Role="proveedores" Type="Self.proveedores" Multiplicity="1" />
+          <End Role="productosxproveedores" Type="Self.productosxproveedores" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="proveedores">
+              <PropertyRef Name="idproveedor" />
+            </Principal>
+            <Dependent Role="productosxproveedores">
+              <PropertyRef Name="idproveedor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkproductosxsucursalessucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="productosxsucursales" Type="Self.productosxsucursales" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="productosxsucursales">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fkrolesxpersonasroles">
+          <End Role="roles" Type="Self.roles" Multiplicity="1" />
+          <End Role="rolesxpersonas" Type="Self.rolesxpersonas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="idrol" />
+            </Principal>
+            <Dependent Role="rolesxpersonas">
+              <PropertyRef Name="idrol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxcompaniassucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="sucursalesxcompanias" Type="Self.sucursalesxcompanias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="sucursalesxcompanias">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fksucursalesxdistritossucursales">
+          <End Role="sucursales" Type="Self.sucursales" Multiplicity="1" />
+          <End Role="sucursalesxdistritos" Type="Self.sucursalesxdistritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="sucursales">
+              <PropertyRef Name="idsucursal" />
+            </Principal>
+            <Dependent Role="sucursalesxdistritos">
+              <PropertyRef Name="idsucursal" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cantonesxprovincias">
+          <End Role="cantones" Type="Self.cantones" Multiplicity="*" />
+          <End Role="provincias" Type="Self.provincias" Multiplicity="*" />
+        </Association>
+        <Association Name="distritosxcantones">
+          <End Role="cantones" Type="Self.cantones" Multiplicity="*" />
+          <End Role="distritos" Type="Self.distritos" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Proyecto2Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="cajas" EntityType="Self.cajas" />
+          <EntitySet Name="cajasxpersonas" EntityType="Self.cajasxpersonas" />
+          <EntitySet Name="cajasxsucursales" EntityType="Self.cajasxsucursales" />
+          <EntitySet Name="cantones" EntityType="Self.cantones" />
+          <EntitySet Name="companias" EntityType="Self.companias" />
+          <EntitySet Name="distritos" EntityType="Self.distritos" />
+          <EntitySet Name="facturas" EntityType="Self.facturas" />
+          <EntitySet Name="facturasxpersonas" EntityType="Self.facturasxpersonas" />
+          <EntitySet Name="facturasxsucursales" EntityType="Self.facturasxsucursales" />
+          <EntitySet Name="formapagos" EntityType="Self.formapagos" />
+          <EntitySet Name="formapagosxfacturas" EntityType="Self.formapagosxfacturas" />
+          <EntitySet Name="personas" EntityType="Self.personas" />
+          <EntitySet Name="personasxdistritos" EntityType="Self.personasxdistritos" />
+          <EntitySet Name="personasxsucursales" EntityType="Self.personasxsucursales" />
+          <EntitySet Name="productos" EntityType="Self.productos" />
+          <EntitySet Name="productosxfacturas" EntityType="Self.productosxfacturas" />
+          <EntitySet Name="productosxproveedores" EntityType="Self.productosxproveedores" />
+          <EntitySet Name="productosxsucursales" EntityType="Self.productosxsucursales" />
+          <EntitySet Name="proveedores" EntityType="Self.proveedores" />
+          <EntitySet Name="provincias" EntityType="Self.provincias" />
+          <EntitySet Name="roles" EntityType="Self.roles" />
+          <EntitySet Name="rolesxpersonas" EntityType="Self.rolesxpersonas" />
+          <EntitySet Name="sucursales" EntityType="Self.sucursales" />
+          <EntitySet Name="sucursalesxcompanias" EntityType="Self.sucursalesxcompanias" />
+          <EntitySet Name="sucursalesxdistritos" EntityType="Self.sucursalesxdistritos" />
+          <AssociationSet Name="fkcajasxpersonascajas" Association="Self.fkcajasxpersonascajas">
+            <End Role="cajas" EntitySet="cajas" />
+            <End Role="cajasxpersonas" EntitySet="cajasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkcajasxsucursalescajas" Association="Self.fkcajasxsucursalescajas">
+            <End Role="cajas" EntitySet="cajas" />
+            <End Role="cajasxsucursales" EntitySet="cajasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkcajasxpersonaspersonas" Association="Self.fkcajasxpersonaspersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="cajasxpersonas" EntitySet="cajasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkcajasxsucursalessucursales" Association="Self.fkcajasxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="cajasxsucursales" EntitySet="cajasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxcompaniascompanias" Association="Self.fksucursalesxcompaniascompanias">
+            <End Role="companias" EntitySet="companias" />
+            <End Role="sucursalesxcompanias" EntitySet="sucursalesxcompanias" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxdistritosdistritos" Association="Self.fkpersonasxdistritosdistritos">
+            <End Role="distritos" EntitySet="distritos" />
+            <End Role="personasxdistritos" EntitySet="personasxdistritos" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxdistritosdistritos" Association="Self.fksucursalesxdistritosdistritos">
+            <End Role="distritos" EntitySet="distritos" />
+            <End Role="sucursalesxdistritos" EntitySet="sucursalesxdistritos" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxpersonasfacturas" Association="Self.fkfacturasxpersonasfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="facturasxpersonas" EntitySet="facturasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxsucursalesfacturas" Association="Self.fkfacturasxsucursalesfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="facturasxsucursales" EntitySet="facturasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkformapagosxfacturasfacturas" Association="Self.fkformapagosxfacturasfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="formapagosxfacturas" EntitySet="formapagosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxfacturasfacturas" Association="Self.fkproductosxfacturasfacturas">
+            <End Role="facturas" EntitySet="facturas" />
+            <End Role="productosxfacturas" EntitySet="productosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxpersonaspersonas" Association="Self.fkfacturasxpersonaspersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="facturasxpersonas" EntitySet="facturasxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkfacturasxsucursalessucursales" Association="Self.fkfacturasxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="facturasxsucursales" EntitySet="facturasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkformapagosxfacturasformapagos" Association="Self.fkformapagosxfacturasformapagos">
+            <End Role="formapagos" EntitySet="formapagos" />
+            <End Role="formapagosxfacturas" EntitySet="formapagosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxdistritospersonas" Association="Self.fkpersonasxdistritospersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personasxdistritos" EntitySet="personasxdistritos" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxsucursalespersonas" Association="Self.fkpersonasxsucursalespersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="personasxsucursales" EntitySet="personasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkrolesxpersonaspersonas" Association="Self.fkrolesxpersonaspersonas">
+            <End Role="personas" EntitySet="personas" />
+            <End Role="rolesxpersonas" EntitySet="rolesxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fkpersonasxsucursalessucursales" Association="Self.fkpersonasxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="personasxsucursales" EntitySet="personasxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxfacturasproductos" Association="Self.fkproductosxfacturasproductos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="productosxfacturas" EntitySet="productosxfacturas" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxproveedoresproductos" Association="Self.fkproductosxproveedoresproductos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="productosxproveedores" EntitySet="productosxproveedores" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxsucursalesproductos" Association="Self.fkproductosxsucursalesproductos">
+            <End Role="productos" EntitySet="productos" />
+            <End Role="productosxsucursales" EntitySet="productosxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxproveedoresproveedores" Association="Self.fkproductosxproveedoresproveedores">
+            <End Role="proveedores" EntitySet="proveedores" />
+            <End Role="productosxproveedores" EntitySet="productosxproveedores" />
+          </AssociationSet>
+          <AssociationSet Name="fkproductosxsucursalessucursales" Association="Self.fkproductosxsucursalessucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="productosxsucursales" EntitySet="productosxsucursales" />
+          </AssociationSet>
+          <AssociationSet Name="fkrolesxpersonasroles" Association="Self.fkrolesxpersonasroles">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="rolesxpersonas" EntitySet="rolesxpersonas" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxcompaniassucursales" Association="Self.fksucursalesxcompaniassucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="sucursalesxcompanias" EntitySet="sucursalesxcompanias" />
+          </AssociationSet>
+          <AssociationSet Name="fksucursalesxdistritossucursales" Association="Self.fksucursalesxdistritossucursales">
+            <End Role="sucursales" EntitySet="sucursales" />
+            <End Role="sucursalesxdistritos" EntitySet="sucursalesxdistritos" />
+          </AssociationSet>
+          <AssociationSet Name="cantonesxprovincias" Association="Self.cantonesxprovincias">
+            <End Role="cantones" EntitySet="cantones" />
+            <End Role="provincias" EntitySet="provincias" />
+          </AssociationSet>
+          <AssociationSet Name="distritosxcantones" Association="Self.distritosxcantones">
+            <End Role="cantones" EntitySet="cantones" />
+            <End Role="distritos" EntitySet="distritos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Proyecto2ModelStoreContainer" CdmEntityContainer="Proyecto2Entities">
+          <EntitySetMapping Name="cajas">
+            <EntityTypeMapping TypeName="Proyecto2Model.cajas">
+              <MappingFragment StoreEntitySet="cajas">
+                <ScalarProperty Name="idcaja" ColumnName="idcaja" />
+                <ScalarProperty Name="fechainicial" ColumnName="fechainicial" />
+                <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
+                <ScalarProperty Name="dineroinicial" ColumnName="dineroinicial" />
+                <ScalarProperty Name="dinerofinal" ColumnName="dinerofinal" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cajasxpersonas">
+            <EntityTypeMapping TypeName="Proyecto2Model.cajasxpersonas">
+              <MappingFragment StoreEntitySet="cajasxpersonas">
+                <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+                <ScalarProperty Name="idcaja" ColumnName="idcaja" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cajasxsucursales">
+            <EntityTypeMapping TypeName="Proyecto2Model.cajasxsucursales">
+              <MappingFragment StoreEntitySet="cajasxsucursales">
+                <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+                <ScalarProperty Name="idcaja" ColumnName="idcaja" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cantones">
+            <EntityTypeMapping TypeName="Proyecto2Model.cantones">
+              <MappingFragment StoreEntitySet="cantones">
+                <ScalarProperty Name="idcanton" ColumnName="idcanton" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companias">
+            <EntityTypeMapping TypeName="Proyecto2Model.companias">
+              <MappingFragment StoreEntitySet="companias">
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="distritos">
+            <EntityTypeMapping TypeName="Proyecto2Model.distritos">
+              <MappingFragment StoreEntitySet="distritos">
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facturas">
+            <EntityTypeMapping TypeName="Proyecto2Model.facturas">
+              <MappingFragment StoreEntitySet="facturas">
+                <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facturasxpersonas">
+            <EntityTypeMapping TypeName="Proyecto2Model.facturasxpersonas">
+              <MappingFragment StoreEntitySet="facturasxpersonas">
+                <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+                <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="facturasxsucursales">
+            <EntityTypeMapping TypeName="Proyecto2Model.facturasxsucursales">
+              <MappingFragment StoreEntitySet="facturasxsucursales">
+                <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+                <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+                <ScalarProperty Name="numeroconsecutivo" ColumnName="numeroconsecutivo" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formapagos">
+            <EntityTypeMapping TypeName="Proyecto2Model.formapagos">
+              <MappingFragment StoreEntitySet="formapagos">
+                <ScalarProperty Name="idformapago" ColumnName="idformapago" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="formapagosxfacturas">
+            <EntityTypeMapping TypeName="Proyecto2Model.formapagosxfacturas">
+              <MappingFragment StoreEntitySet="formapagosxfacturas">
+                <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+                <ScalarProperty Name="idformapago" ColumnName="idformapago" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personas">
+            <EntityTypeMapping TypeName="Proyecto2Model.personas">
+              <MappingFragment StoreEntitySet="personas">
+                <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+                <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="iddireccion" ColumnName="iddireccion" />
+                <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personasxdistritos">
+            <EntityTypeMapping TypeName="Proyecto2Model.personasxdistritos">
+              <MappingFragment StoreEntitySet="personasxdistritos">
+                <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personasxsucursales">
+            <EntityTypeMapping TypeName="Proyecto2Model.personasxsucursales">
+              <MappingFragment StoreEntitySet="personasxsucursales">
+                <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+                <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productos">
+            <EntityTypeMapping TypeName="Proyecto2Model.productos">
+              <MappingFragment StoreEntitySet="productos">
+                <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo_ean" ColumnName="codigo_ean" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productosxfacturas">
+            <EntityTypeMapping TypeName="Proyecto2Model.productosxfacturas">
+              <MappingFragment StoreEntitySet="productosxfacturas">
+                <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+                <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productosxproveedores">
+            <EntityTypeMapping TypeName="Proyecto2Model.productosxproveedores">
+              <MappingFragment StoreEntitySet="productosxproveedores">
+                <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+                <ScalarProperty Name="idproveedor" ColumnName="idproveedor" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productosxsucursales">
+            <EntityTypeMapping TypeName="Proyecto2Model.productosxsucursales">
+              <MappingFragment StoreEntitySet="productosxsucursales">
+                <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+                <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="minimo" ColumnName="minimo" />
+                <ScalarProperty Name="promedio" ColumnName="promedio" />
+                <ScalarProperty Name="cantidadsucursal" ColumnName="cantidadsucursal" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proveedores">
+            <EntityTypeMapping TypeName="Proyecto2Model.proveedores">
+              <MappingFragment StoreEntitySet="proveedores">
+                <ScalarProperty Name="idproveedor" ColumnName="idproveedor" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo_ean" ColumnName="codigo_ean" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provincias">
+            <EntityTypeMapping TypeName="Proyecto2Model.provincias">
+              <MappingFragment StoreEntitySet="provincias">
+                <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="roles">
+            <EntityTypeMapping TypeName="Proyecto2Model.roles">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="idrol" ColumnName="idrol" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolesxpersonas">
+            <EntityTypeMapping TypeName="Proyecto2Model.rolesxpersonas">
+              <MappingFragment StoreEntitySet="rolesxpersonas">
+                <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+                <ScalarProperty Name="idrol" ColumnName="idrol" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sucursales">
+            <EntityTypeMapping TypeName="Proyecto2Model.sucursales">
+              <MappingFragment StoreEntitySet="sucursales">
+                <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="iddireccion" ColumnName="iddireccion" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sucursalesxcompanias">
+            <EntityTypeMapping TypeName="Proyecto2Model.sucursalesxcompanias">
+              <MappingFragment StoreEntitySet="sucursalesxcompanias">
+                <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+                <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sucursalesxdistritos">
+            <EntityTypeMapping TypeName="Proyecto2Model.sucursalesxdistritos">
+              <MappingFragment StoreEntitySet="sucursalesxdistritos">
+                <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+                <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
+                <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="cantonesxprovincias" TypeName="Proyecto2Model.cantonesxprovincias" StoreEntitySet="cantonesxprovincias">
+            <EndProperty Name="cantones">
+              <ScalarProperty Name="idcanton" ColumnName="idcanton" />
+            </EndProperty>
+            <EndProperty Name="provincias">
+              <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="distritosxcantones" TypeName="Proyecto2Model.distritosxcantones" StoreEntitySet="distritosxcantones">
+            <EndProperty Name="cantones">
+              <ScalarProperty Name="idcanton" ColumnName="idcanton" />
+            </EndProperty>
+            <EndProperty Name="distritos">
+              <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

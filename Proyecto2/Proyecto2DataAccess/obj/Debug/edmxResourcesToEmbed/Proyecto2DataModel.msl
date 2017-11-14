@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Proyecto2ModelStoreContainer" CdmEntityContainer="Proyecto2Entities">
+    <EntitySetMapping Name="cajas">
+      <EntityTypeMapping TypeName="Proyecto2Model.cajas">
+        <MappingFragment StoreEntitySet="cajas">
+          <ScalarProperty Name="idcaja" ColumnName="idcaja" />
+          <ScalarProperty Name="fechainicial" ColumnName="fechainicial" />
+          <ScalarProperty Name="fechafinal" ColumnName="fechafinal" />
+          <ScalarProperty Name="dineroinicial" ColumnName="dineroinicial" />
+          <ScalarProperty Name="dinerofinal" ColumnName="dinerofinal" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cajasxpersonas">
+      <EntityTypeMapping TypeName="Proyecto2Model.cajasxpersonas">
+        <MappingFragment StoreEntitySet="cajasxpersonas">
+          <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+          <ScalarProperty Name="idcaja" ColumnName="idcaja" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cajasxsucursales">
+      <EntityTypeMapping TypeName="Proyecto2Model.cajasxsucursales">
+        <MappingFragment StoreEntitySet="cajasxsucursales">
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="idcaja" ColumnName="idcaja" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cantones">
+      <EntityTypeMapping TypeName="Proyecto2Model.cantones">
+        <MappingFragment StoreEntitySet="cantones">
+          <ScalarProperty Name="idcanton" ColumnName="idcanton" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companias">
+      <EntityTypeMapping TypeName="Proyecto2Model.companias">
+        <MappingFragment StoreEntitySet="companias">
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="distritos">
+      <EntityTypeMapping TypeName="Proyecto2Model.distritos">
+        <MappingFragment StoreEntitySet="distritos">
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facturas">
+      <EntityTypeMapping TypeName="Proyecto2Model.facturas">
+        <MappingFragment StoreEntitySet="facturas">
+          <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facturasxpersonas">
+      <EntityTypeMapping TypeName="Proyecto2Model.facturasxpersonas">
+        <MappingFragment StoreEntitySet="facturasxpersonas">
+          <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+          <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="facturasxsucursales">
+      <EntityTypeMapping TypeName="Proyecto2Model.facturasxsucursales">
+        <MappingFragment StoreEntitySet="facturasxsucursales">
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+          <ScalarProperty Name="numeroconsecutivo" ColumnName="numeroconsecutivo" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formapagos">
+      <EntityTypeMapping TypeName="Proyecto2Model.formapagos">
+        <MappingFragment StoreEntitySet="formapagos">
+          <ScalarProperty Name="idformapago" ColumnName="idformapago" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="formapagosxfacturas">
+      <EntityTypeMapping TypeName="Proyecto2Model.formapagosxfacturas">
+        <MappingFragment StoreEntitySet="formapagosxfacturas">
+          <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+          <ScalarProperty Name="idformapago" ColumnName="idformapago" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personas">
+      <EntityTypeMapping TypeName="Proyecto2Model.personas">
+        <MappingFragment StoreEntitySet="personas">
+          <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="apellido1" ColumnName="apellido1" />
+          <ScalarProperty Name="apellido2" ColumnName="apellido2" />
+          <ScalarProperty Name="telefono" ColumnName="telefono" />
+          <ScalarProperty Name="iddireccion" ColumnName="iddireccion" />
+          <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personasxdistritos">
+      <EntityTypeMapping TypeName="Proyecto2Model.personasxdistritos">
+        <MappingFragment StoreEntitySet="personasxdistritos">
+          <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="personasxsucursales">
+      <EntityTypeMapping TypeName="Proyecto2Model.personasxsucursales">
+        <MappingFragment StoreEntitySet="personasxsucursales">
+          <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productos">
+      <EntityTypeMapping TypeName="Proyecto2Model.productos">
+        <MappingFragment StoreEntitySet="productos">
+          <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo_ean" ColumnName="codigo_ean" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productosxfacturas">
+      <EntityTypeMapping TypeName="Proyecto2Model.productosxfacturas">
+        <MappingFragment StoreEntitySet="productosxfacturas">
+          <ScalarProperty Name="idfactura" ColumnName="idfactura" />
+          <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productosxproveedores">
+      <EntityTypeMapping TypeName="Proyecto2Model.productosxproveedores">
+        <MappingFragment StoreEntitySet="productosxproveedores">
+          <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+          <ScalarProperty Name="idproveedor" ColumnName="idproveedor" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productosxsucursales">
+      <EntityTypeMapping TypeName="Proyecto2Model.productosxsucursales">
+        <MappingFragment StoreEntitySet="productosxsucursales">
+          <ScalarProperty Name="idproducto" ColumnName="idproducto" />
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="precio" ColumnName="precio" />
+          <ScalarProperty Name="minimo" ColumnName="minimo" />
+          <ScalarProperty Name="promedio" ColumnName="promedio" />
+          <ScalarProperty Name="cantidadsucursal" ColumnName="cantidadsucursal" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proveedores">
+      <EntityTypeMapping TypeName="Proyecto2Model.proveedores">
+        <MappingFragment StoreEntitySet="proveedores">
+          <ScalarProperty Name="idproveedor" ColumnName="idproveedor" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="codigo_ean" ColumnName="codigo_ean" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="provincias">
+      <EntityTypeMapping TypeName="Proyecto2Model.provincias">
+        <MappingFragment StoreEntitySet="provincias">
+          <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="Proyecto2Model.roles">
+        <MappingFragment StoreEntitySet="roles">
+          <ScalarProperty Name="idrol" ColumnName="idrol" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rolesxpersonas">
+      <EntityTypeMapping TypeName="Proyecto2Model.rolesxpersonas">
+        <MappingFragment StoreEntitySet="rolesxpersonas">
+          <ScalarProperty Name="idcedula" ColumnName="idcedula" />
+          <ScalarProperty Name="idrol" ColumnName="idrol" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursales">
+      <EntityTypeMapping TypeName="Proyecto2Model.sucursales">
+        <MappingFragment StoreEntitySet="sucursales">
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="iddireccion" ColumnName="iddireccion" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursalesxcompanias">
+      <EntityTypeMapping TypeName="Proyecto2Model.sucursalesxcompanias">
+        <MappingFragment StoreEntitySet="sucursalesxcompanias">
+          <ScalarProperty Name="idcompania" ColumnName="idcompania" />
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sucursalesxdistritos">
+      <EntityTypeMapping TypeName="Proyecto2Model.sucursalesxdistritos">
+        <MappingFragment StoreEntitySet="sucursalesxdistritos">
+          <ScalarProperty Name="idsucursal" ColumnName="idsucursal" />
+          <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="cantonesxprovincias" TypeName="Proyecto2Model.cantonesxprovincias" StoreEntitySet="cantonesxprovincias">
+      <EndProperty Name="cantones">
+        <ScalarProperty Name="idcanton" ColumnName="idcanton" />
+      </EndProperty>
+      <EndProperty Name="provincias">
+        <ScalarProperty Name="idprovincia" ColumnName="idprovincia" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="distritosxcantones" TypeName="Proyecto2Model.distritosxcantones" StoreEntitySet="distritosxcantones">
+      <EndProperty Name="cantones">
+        <ScalarProperty Name="idcanton" ColumnName="idcanton" />
+      </EndProperty>
+      <EndProperty Name="distritos">
+        <ScalarProperty Name="iddistrito" ColumnName="iddistrito" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
