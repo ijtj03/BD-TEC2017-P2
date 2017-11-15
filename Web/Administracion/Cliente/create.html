@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 
 <html>
 
@@ -57,11 +57,39 @@
             </nav>
 
         </header>
-
-
-
         <section id='main'>
-           
+            <section>
+                <form class="form-inline">
+                    <center>
+                        <br /><br />
+                        <h2>CREAR CLIENTE</h2>
+                        <input type="number" class='form-control' value='' placeholder='Cedula' name='txtcedula' ng-model="cedula" required />
+                        <br><br>
+                        <input type="text" class='form-control' value='' placeholder='Nombre' name='txtnombre' ng-model="nombre" required />
+                        <br><br>
+                        <input type="text" class='form-control' value='' placeholder='Primer Apellido' name='txtapp1' ng-model="apellido1" required />
+                        <br><br>
+                        <input type="text" class='form-control' value='' placeholder='Segundo Apellido' name='txtapp2' ng-model="apellido2" required />
+                        <br><br>
+                        <input type="number" class='form-control' value='' placeholder='Telefono' name='txttel' ng-model="telefono" required />
+                        <br><br>
+                        <input type="password" class='form-control' value='' placeholder='Password' name='txtpass' ng-model="password" required />
+                        <br><br>
+                        <input type="text" class='form-control' value='' placeholder='Provincia' name='txtprovincia' ng-model="provincia" required />
+                        <br><br>
+                        <input type="text" class='form-control' value='' placeholder='Canton' name='txtcanton' ng-model="canton" required />
+                        <br><br>
+                        <input type="text" class='form-control' value='' placeholder='Distrito' name='txtdistrito' ng-model="distrito" required />
+                        <br><br>
+                        <input type="text" class='form-control' value='' placeholder='Direccion' name='txtdir' ng-model="direccion" required />
+                        <br><br>
+                        <input type="date" class='form-control' value='' placeholder='Fecha Nacimiento' name='txtFechaNac' ng-model="fecha" required />
+                        <br><br>
+
+                        <button type="submit" class="btn btn-default">Crear Cliente</button>
+                    </center>
+                </form>
+            </section>           
         </section>
 
 
