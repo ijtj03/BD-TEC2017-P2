@@ -1,8 +1,39 @@
+/*proveedores(nombre,descripcion)*/
+/*productos(codigo_ean,nombre,descripcion)*/
+/*productosxproveedores(codigo_ean,idproveedor,precio)*/
+/*sucursales(nombre)*/
+/*productosxsucursales(idproducto,idsucursal,precio,minimo,promedio,cantidadsucursal)*/
+/*companias(nombre)*/
+/*sucursalesxcompanias(idcompania,idsucursal)*/
+/*facturas(fecha)*/
+/*productosxfacturas(idfactura,idproducto,cantidad)*/
+/*facturasxsucursales(idsucursal,idfactura,numeroconsecutivo)*/
+/*formaPagos(nombre)*/
+/*formapagosxfacturas(idfactura,idformapago)*/
+
+/*personas(idcedula,nombre,appellido1,apellido2,telefono,fechanacimiento)*/
+insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (111111111,'cajero','cajero','cajero',88888888,'19971003','cajero');
+
+/*facturasxcajeros(idfactura,idcedula)*/
+/*facturasxpersonas(idfactura,idcedula)*/
+/*personasxsucursales(idcedula,idsucursal)*/
+
+/*roles(nombre,direccion)*/
 insert into roles(nombre,descripcion) values ('cajero','el que cobra en la caja');
 insert into roles(nombre,descripcion) values ('administrador','administrador');
 insert into roles(nombre,descripcion) values ('cliente','cliente');
 insert into roles(nombre,descripcion) values ('supervisor','supervisor');
 
-insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (111111111,'cajero','cajero','cajero',88888888,'19971003','cajero');
-
+/*rolesxpersonas(idcedula,idrol)*/
 insert into rolesxpersonas (idcedula,idrol) values(111111111,1);
+
+/*cajas(dineroinicial,dinerofinal,fechainicial,fechafinal)*/
+/*cajasxpersonas(idcedula,idcaja)*/
+/*cajasxsucursales(idcaja,idsucursal)*/
+/*provincias(nombre)*/
+/*cantones(nombre)*/
+/*distritos(nombre)*/
+/*distritosxcantones(iddistrito,idcanton)*/
+/*cantonesxprovincias(idprovincia,idcanton)*/
+/*personasxdistrito(iddistrito,idcedula,direccion)*/
+/*sucursalesxdistrito(iddistrito,idsucursal,direccion)*/
