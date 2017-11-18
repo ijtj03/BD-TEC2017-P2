@@ -12,7 +12,7 @@ namespace Proyecto1.Services
 {
     public class PersonaService
     {        
-        public Boolean ValidCajero(int id,string contrasena)
+        public Boolean ValidCajero(int id,string contrasena,int money)
         {
             Boolean ans = false;
             try
@@ -28,6 +28,7 @@ namespace Proyecto1.Services
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("pId", id);
                 command.Parameters.AddWithValue("pContrasena", contrasena);
+                command.Parameters.AddWithValue("pMoney", money);
 
                 read = command.ExecuteReader();
 

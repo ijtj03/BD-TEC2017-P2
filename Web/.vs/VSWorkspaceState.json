@@ -1,13 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Administracion",
-    "\\Administracion\\Cliente",
-    "\\Administracion\\Empleado",
-    "\\Administracion\\Producto",
-    "\\Administracion\\Proveedor",
-    "\\Administracion\\Sucursal"
+    "\\Scripts - Web",
+    "\\Scripts - Web\\Scripts - Caja"
   ],
-  "SelectedNode": "\\Administracion\\Sucursal\\update.html",
+  "SelectedNode": "\\Scripts - Web\\Scripts - Caja\\LoginCaja.js",
   "PreviewInSolutionExplorer": false
 }

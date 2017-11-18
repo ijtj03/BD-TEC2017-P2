@@ -10,16 +10,16 @@ using Proyecto1.Classes;
 
 namespace Proyecto1.Controllers
 {
-    [RoutePrefix("api/Persona")]
+    [RoutePrefix("api/Personas")]
     public class PersonaController : ApiController
     {
         [HttpGet]
         [Route("ValidCajero")]
-        public IHttpActionResult ValidCajero(int id, string contrasena)
+        public IHttpActionResult ValidCajero(int id, string contrasena,int money)
         {
             PersonaService con = new PersonaService();
-            return Ok(con.ValidCajero(id, contrasena));
+            return Ok(con.ValidCajero(id, contrasena, money));
         }        
-
+            
     }
 }
