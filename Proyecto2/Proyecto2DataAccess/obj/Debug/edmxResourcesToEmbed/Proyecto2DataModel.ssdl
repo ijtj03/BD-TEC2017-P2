@@ -120,9 +120,9 @@
     <Property Name="apellido1" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="apellido2" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="telefono" Type="int4" Nullable="false" />
-    <Property Name="iddireccion" Type="int4" Nullable="false" />
     <Property Name="fechanacimiento" Type="date" Nullable="false" />
     <Property Name="logicdelete" Type="bool" Nullable="false" />
+    <Property Name="contrasena" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="personasxdistritos">
     <Key>

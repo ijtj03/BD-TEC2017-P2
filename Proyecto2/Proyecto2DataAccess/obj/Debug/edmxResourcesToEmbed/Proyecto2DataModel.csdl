@@ -135,6 +135,7 @@
     <NavigationProperty Name="personasxdistritos" Relationship="Self.fkpersonasxdistritospersonas" FromRole="personas" ToRole="personasxdistritos" />
     <NavigationProperty Name="personasxsucursales" Relationship="Self.fkpersonasxsucursalespersonas" FromRole="personas" ToRole="personasxsucursales" />
     <NavigationProperty Name="rolesxpersonas" Relationship="Self.fkrolesxpersonaspersonas" FromRole="personas" ToRole="rolesxpersonas" />
+    <Property Name="contrasena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="personasxdistritos">
     <Key>

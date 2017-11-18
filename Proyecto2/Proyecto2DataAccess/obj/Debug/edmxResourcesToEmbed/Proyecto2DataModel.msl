@@ -105,12 +105,12 @@
     <EntitySetMapping Name="personas">
       <EntityTypeMapping TypeName="Proyecto2Model.personas">
         <MappingFragment StoreEntitySet="personas">
+          <ScalarProperty Name="contrasena" ColumnName="contrasena" />
           <ScalarProperty Name="idcedula" ColumnName="idcedula" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="apellido1" ColumnName="apellido1" />
           <ScalarProperty Name="apellido2" ColumnName="apellido2" />
           <ScalarProperty Name="telefono" ColumnName="telefono" />
-          <ScalarProperty Name="iddireccion" ColumnName="iddireccion" />
           <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
           <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
         </MappingFragment>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Proyecto2Model.Store" Provider="Npgsql" ProviderManifestToken="9.6.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Proyecto2Model.Store" Provider="Npgsql" ProviderManifestToken="9.6.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="cajas">
           <Key>
             <PropertyRef Name="idcaja" />
@@ -125,9 +125,9 @@
           <Property Name="apellido1" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="apellido2" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="telefono" Type="int4" Nullable="false" />
-          <Property Name="iddireccion" Type="int4" Nullable="false" />
           <Property Name="fechanacimiento" Type="date" Nullable="false" />
           <Property Name="logicdelete" Type="bool" Nullable="false" />
+          <Property Name="contrasena" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="personasxdistritos">
           <Key>
@@ -763,8 +763,7 @@
             <End Role="sucursalesxdistritos" EntitySet="sucursalesxdistritos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Proyecto2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -903,6 +902,7 @@
           <NavigationProperty Name="personasxdistritos" Relationship="Self.fkpersonasxdistritospersonas" FromRole="personas" ToRole="personasxdistritos" />
           <NavigationProperty Name="personasxsucursales" Relationship="Self.fkpersonasxsucursalespersonas" FromRole="personas" ToRole="personasxsucursales" />
           <NavigationProperty Name="rolesxpersonas" Relationship="Self.fkrolesxpersonaspersonas" FromRole="personas" ToRole="rolesxpersonas" />
+          <Property Name="contrasena" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="personasxdistritos">
           <Key>
@@ -1626,12 +1626,12 @@
           <EntitySetMapping Name="personas">
             <EntityTypeMapping TypeName="Proyecto2Model.personas">
               <MappingFragment StoreEntitySet="personas">
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
                 <ScalarProperty Name="idcedula" ColumnName="idcedula" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="apellido1" ColumnName="apellido1" />
                 <ScalarProperty Name="apellido2" ColumnName="apellido2" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="iddireccion" ColumnName="iddireccion" />
                 <ScalarProperty Name="fechanacimiento" ColumnName="fechanacimiento" />
                 <ScalarProperty Name="logicdelete" ColumnName="logicdelete" />
               </MappingFragment>

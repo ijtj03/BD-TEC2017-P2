@@ -32,6 +32,7 @@ namespace Proyecto2DataAccess
         public int iddireccion { get; set; }
         public System.DateTime fechanacimiento { get; set; }
         public bool logicdelete { get; set; }
+        public string contrasena { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cajasxpersonas> cajasxpersonas { get; set; }

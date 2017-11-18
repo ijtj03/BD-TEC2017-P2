@@ -1,0 +1,8 @@
+insert into roles(nombre,descripcion) values ('cajero','el que cobra en la caja');
+insert into roles(nombre,descripcion) values ('administrador','administrador');
+insert into roles(nombre,descripcion) values ('cliente','cliente');
+insert into roles(nombre,descripcion) values ('supervisor','supervisor');
+
+insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (111111111,'cajero','cajero','cajero',88888888,'19971003','cajero');
+
+insert into rolesxpersonas (idcedula,idrol) values(111111111,1);
