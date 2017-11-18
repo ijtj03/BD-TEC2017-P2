@@ -60,7 +60,47 @@
 
 
 
-        <section id='main'></section>
+        <section id='main'>
+            <div>
+                <center>
+                    <br /><br /><h2>VER EMPLEADO</h2>
+                    <select class="form-control">
+                        <option>dbName(dbCedula)</option> <!--con un repeat-->
+                    </select>
+                    <button type="submit" class="btn btn-default">Buscar</button>
+                </center>
+            </div>
+            <div>
+                <form class="form-inline">
+                    <center>
+                        <br /><br />
+                        <input type="number" class='form-control' value='604410657' placeholder='Cedula' name='txtcedula' ng-model="cedula" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='dbName' placeholder='Nombre' name='txtnombre' ng-model="nombre" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='dbApp' placeholder='Primer Apellido' name='txtapp1' ng-model="apellido1" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='bdApp' placeholder='Segundo Apellido' name='txtapp2' ng-model="apellido2" required disabled />
+                        <br><br>
+                        <input type="number" class='form-control' value='88888888' placeholder='Telefono' name='txttel' ng-model="telefono" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='dbProv' placeholder='Provincia' name='txtprovincia' ng-model="provincia" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='dbCan' placeholder='Canton' name='txtcanton' ng-model="canton" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='dbDis' placeholder='Distrito' name='txtdistrito' ng-model="distrito" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='dbDir' placeholder='Direccion' name='txtdir' ng-model="direccion" required disabled />
+                        <br><br>
+                        <input type="date" class='form-control' value='1997-08-01' placeholder='Fecha Nacimiento' name='txtFechaNac' ng-model="fecha" required disabled />
+                        <br><br>
+                        <input type="text" class='form-control' value='dbRol' placeholder='Rol' name='txtrol' ng-model="rol" required disabled />
+                        <br><br>
+                        <button type="submit" class="btn btn-default">Regresar</button>
+                    </center>
+                </form>
+            </div>
+        </section>
 
 
 

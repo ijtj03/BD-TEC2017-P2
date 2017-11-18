@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
     <title>Registro Cliente</title>
@@ -49,11 +49,15 @@
                         <br><br>
                         <input type="password" class='field' value='' placeholder='Password' name='txtpass' ng-model="password" required />
                         <br><br>
-                        <input type="text" class='field' value='' placeholder='Provincia' name='txtprovincia' ng-model="provincia" required />
-                        <br><br>
-                        <input type="text" class='field' value='' placeholder='Canton' name='txtcanton' ng-model="canton" required />
-                        <br><br>
-                        <input type="text" class='field' value='' placeholder='Distrito' name='txtdistrito' ng-model="distrito" required />
+                        <select class="form-control">
+                            <option>dbProvincias</option> <!--con un repeat-->
+                        </select>
+                        <select class="form-control">
+                            <option>dbCantonesxProvincia</option> <!--con un repeat-->
+                        </select>
+                        <select class="form-control">
+                            <option>dbDistritosxCanton</option> <!--con un repeat-->
+                        </select>
                         <br><br>
                         <input type="text" class='field' value='' placeholder='Direccion' name='txtdir' ng-model="direccion" required />
                         <br><br>

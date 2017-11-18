@@ -86,11 +86,15 @@
                         <br><br>
                         <input type="password" class='form-control' value='' placeholder='Password' name='txtpass' ng-model="password" required />
                         <br><br>
-                        <input type="text" class='form-control' value='dbProv' placeholder='Provincia' name='txtprovincia' ng-model="provincia" required />
-                        <br><br>
-                        <input type="text" class='form-control' value='dbCan' placeholder='Canton' name='txtcanton' ng-model="canton" required />
-                        <br><br>
-                        <input type="text" class='form-control' value='dbDis' placeholder='Distrito' name='txtdistrito' ng-model="distrito" required />
+                        <select class="form-control">
+                            <option>dbProvincias</option> <!--con un repeat-->
+                        </select>
+                        <select class="form-control">
+                            <option>dbCantonesxProvincia</option> <!--con un repeat-->
+                        </select>
+                        <select class="form-control">
+                            <option>dbDistritosxCanton</option> <!--con un repeat-->
+                        </select>
                         <br><br>
                         <input type="text" class='form-control' value='dbDir' placeholder='Direccion' name='txtdir' ng-model="direccion" required />
                         <br><br>
