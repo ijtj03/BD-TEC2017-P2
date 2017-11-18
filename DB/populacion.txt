@@ -11,6 +11,100 @@
 /*formaPagos(nombre)*/
 /*formapagosxfacturas(idfactura,idformapago)*/
 
+insert into provincias(idprovincia,nombre) values(1,'San Jose');
+insert into provincias(idprovincia,nombre) values(2,'Alajuela');
+insert into provincias(idprovincia,nombre) values(3,'Cartago');
+insert into provincias(idprovincia,nombre) values(4,'Heredia');
+insert into provincias(idprovincia,nombre) values(5,'Guanacaste');
+insert into provincias(idprovincia,nombre) values(6,'Puntarenas');
+insert into provincias(idprovincia,nombre) values(7,'Limon');
+
+insert into cantones(idcanton,nombre) values(1,'San Jose');
+insert into cantones(idcanton,nombre) values(2,'Escazu');
+insert into cantones(idcanton,nombre) values(3,'Desamparados');
+insert into cantones(idcanton,nombre) values(4,'Montes de Oca');
+insert into cantones(idcanton,nombre) values(5,'Santa Ana');
+insert into cantones(idcanton,nombre) values(6,'Tibas');
+
+insert into cantonesxprovincias(idprovincia,idcanton) values(1,1);
+insert into cantonesxprovincias(idprovincia,idcanton) values(1,2);
+insert into cantonesxprovincias(idprovincia,idcanton) values(1,3);
+insert into cantonesxprovincias(idprovincia,idcanton) values(1,4);
+insert into cantonesxprovincias(idprovincia,idcanton) values(1,5);
+insert into cantonesxprovincias(idprovincia,idcanton) values(1,6);
+
+insert into cantones(idcanton,nombre) values(7,'Alajuela');
+insert into cantones(idcanton,nombre) values(8,'San Ramon');
+insert into cantones(idcanton,nombre) values(9,'Grecia');
+insert into cantones(idcanton,nombre) values(10,'Atenas');
+insert into cantones(idcanton,nombre) values(11,'Palmares');
+insert into cantones(idcanton,nombre) values(12,'San Carlos');
+insert into cantonesxprovincias(idprovincia,idcanton) values(2,7);
+insert into cantonesxprovincias(idprovincia,idcanton) values(2,8);
+insert into cantonesxprovincias(idprovincia,idcanton) values(2,9);
+insert into cantonesxprovincias(idprovincia,idcanton) values(2,10);
+insert into cantonesxprovincias(idprovincia,idcanton) values(2,11);
+insert into cantonesxprovincias(idprovincia,idcanton) values(2,12);
+
+insert into cantones(idcanton,nombre) values(13,'Cartago');
+insert into cantones(idcanton,nombre) values(14,'Paraiso');
+insert into cantones(idcanton,nombre) values(15,'Turrialba');
+insert into cantones(idcanton,nombre) values(16,'Oreamundo');
+insert into cantonesxprovincias(idprovincia,idcanton) values(3,13);
+insert into cantonesxprovincias(idprovincia,idcanton) values(3,14);
+insert into cantonesxprovincias(idprovincia,idcanton) values(3,15);
+insert into cantonesxprovincias(idprovincia,idcanton) values(3,16);
+
+insert into cantones(idcanton,nombre) values(17,'Heredia');
+insert into cantones(idcanton,nombre) values(18,'Barva');
+insert into cantones(idcanton,nombre) values(19,'Santo Domingo');
+insert into cantonesxprovincias(idprovincia,idcanton) values(4,17);
+insert into cantonesxprovincias(idprovincia,idcanton) values(4,18);
+insert into cantonesxprovincias(idprovincia,idcanton) values(4,19);
+
+insert into cantones(idcanton,nombre) values(20,'Liberia');
+insert into cantones(idcanton,nombre) values(21,'Nicoya');
+insert into cantones(idcanton,nombre) values(22,'Santa Cruz');
+insert into cantonesxprovincias(idprovincia,idcanton) values(5,20);
+insert into cantonesxprovincias(idprovincia,idcanton) values(5,21);
+insert into cantonesxprovincias(idprovincia,idcanton) values(5,22);
+
+insert into cantones(idcanton,nombre) values(23,'Puntarenas');
+insert into cantones(idcanton,nombre) values(24,'Esparza');
+insert into cantones(idcanton,nombre) values(25,'Osa');
+insert into cantones(idcanton,nombre) values(26,'Quepos');
+insert into cantonesxprovincias(idprovincia,idcanton) values(6,23);
+insert into cantonesxprovincias(idprovincia,idcanton) values(6,24);
+insert into cantonesxprovincias(idprovincia,idcanton) values(6,25);
+insert into cantonesxprovincias(idprovincia,idcanton) values(6,26);
+
+insert into cantones(idcanton,nombre) values(27,'Limon');
+insert into cantones(idcanton,nombre) values(28,'Siquirres');
+insert into cantones(idcanton,nombre) values(29,'Matina');
+insert into cantonesxprovincias(idprovincia,idcanton) values(7,27);
+insert into cantonesxprovincias(idprovincia,idcanton) values(7,28);
+insert into cantonesxprovincias(idprovincia,idcanton) values(7,29);
+
+insert into distritos(iddistrito,nombre) values(1,'Paraiso');
+insert into distritos(iddistrito,nombre) values(2,'Llanos de Santa Lucia');
+
+insert into distritos(iddistrito,nombre) values(3,'Espiritu Santo');
+insert into distritos(iddistrito,nombre) values(4,'Macacona');
+insert into distritos(iddistrito,nombre) values(5,'San Jeronimo');
+
+insert into distritos(iddistrito,nombre) values(6,'Heredia');
+insert into distritos(iddistrito,nombre) values(7,'Barva');
+insert into distritos(iddistrito,nombre) values(8,'San Pedro');
+
+insert into distritosxcantones(iddistrito,idcanton) values(1,14);
+insert into distritosxcantones(iddistrito,idcanton) values(2,14);
+insert into distritosxcantones(iddistrito,idcanton) values(3,24);
+insert into distritosxcantones(iddistrito,idcanton) values(4,24);
+insert into distritosxcantones(iddistrito,idcanton) values(5,24);
+insert into distritosxcantones(iddistrito,idcanton) values(6,17);
+insert into distritosxcantones(iddistrito,idcanton) values(7,18);
+insert into distritosxcantones(iddistrito,idcanton) values(8,18);
+
 /*personas(idcedula,nombre,appellido1,apellido2,telefono,fechanacimiento)*/
 insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (111111111,'cajero','cajero','cajero',88888888,'19971003','cajero');
 
