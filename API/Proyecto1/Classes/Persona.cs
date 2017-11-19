@@ -16,6 +16,8 @@ namespace Proyecto1.Classes
         public string Distrito { get; set; }
         public string Direccion { get; set; }
         public string FechaNacimiento { get; set; }
+        public string Rol { get; set; }
+        public string Sucursal { get; set; }
         public bool LogicDelete { get; set; }
     }
 }

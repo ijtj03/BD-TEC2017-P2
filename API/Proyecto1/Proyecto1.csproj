@@ -132,17 +132,23 @@
   <ItemGroup>
     <Compile Include="Classes\Direccion.cs" />
     <Compile Include="Classes\Persona.cs" />
+    <Compile Include="Classes\Proveedor.cs" />
+    <Compile Include="Classes\Sucursal.cs" />
     <Compile Include="Controllers\PersonaController.cs" />
     <Compile Include="Controllers\DireccionController.cs" />
+    <Compile Include="Controllers\SucursalesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DireccionService.cs" />
     <Compile Include="Services\PersonaService.cs" />
+    <Compile Include="Services\SucursalesService.cs" />
     <Compile Include="WebApiConfig.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Sucursales\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

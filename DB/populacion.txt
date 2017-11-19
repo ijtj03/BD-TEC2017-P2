@@ -2,6 +2,31 @@
 /*productos(codigo_ean,nombre,descripcion)*/
 /*productosxproveedores(codigo_ean,idproveedor,precio)*/
 /*sucursales(nombre)*/
+insert into companias(nombre) values('Fishel');
+insert into companias(nombre) values('Bomba Tica');
+
+insert into sucursales(nombre,iddireccion) values('Fishel 1',1);
+insert into sucursales(nombre,iddireccion) values('Fishel 2',1);
+insert into sucursales(nombre,iddireccion) values('Fishel 3',1);
+insert into sucursales(nombre,iddireccion) values('Bomba Tica 1',1);
+insert into sucursales(nombre,iddireccion) values('Bomba Tica 2',1);
+insert into sucursales(nombre,iddireccion) values('Bomba Tica 3',1);
+
+insert into sucursalesxcompanias(idsucursal,idcompania) values(5,1);
+insert into sucursalesxcompanias(idsucursal,idcompania) values(6,1);
+insert into sucursalesxcompanias(idsucursal,idcompania) values(7,1);
+insert into sucursalesxcompanias(idsucursal,idcompania) values(8,2);
+insert into sucursalesxcompanias(idsucursal,idcompania) values(9,2);
+insert into sucursalesxcompanias(idsucursal,idcompania) values(10,2);
+
+insert into sucursalesxdistritos(idsucursal,iddistrito,direccion) values(5,8,'Costado del parque');
+insert into sucursalesxdistritos(idsucursal,iddistrito,direccion) values(6,7,'Costado del parque');
+insert into sucursalesxdistritos(idsucursal,iddistrito,direccion) values(7,6,'Costado del parque');
+insert into sucursalesxdistritos(idsucursal,iddistrito,direccion) values(8,3,'Costado del parque');
+insert into sucursalesxdistritos(idsucursal,iddistrito,direccion) values(9,1,'Costado del parque');
+insert into sucursalesxdistritos(idsucursal,iddistrito,direccion) values(10,5,'Costado del parque');
+
+
 /*productosxsucursales(idproducto,idsucursal,precio,minimo,promedio,cantidadsucursal)*/
 /*companias(nombre)*/
 /*sucursalesxcompanias(idcompania,idsucursal)*/
