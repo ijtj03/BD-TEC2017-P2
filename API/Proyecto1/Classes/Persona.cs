@@ -15,7 +15,7 @@ namespace Proyecto1.Classes
         public string Contrasena { get; set; }
         public string Distrito { get; set; }
         public string Direccion { get; set; }
-        public DateTime FechaNacimiento { get; set; }
+        public string FechaNacimiento { get; set; }
         public bool LogicDelete { get; set; }
     }
 }
