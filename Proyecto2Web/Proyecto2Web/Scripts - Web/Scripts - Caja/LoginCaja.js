@@ -4,6 +4,8 @@ var logincaja = angular.module("LoginCaja", ['ui.router']);
 
 logincaja.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
+    $urlRouterProvider.otherwise('/login');
+
     $stateProvider
         .state('factura', {
            url: '/addFactura',

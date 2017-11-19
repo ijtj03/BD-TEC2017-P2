@@ -19,7 +19,17 @@ namespace Proyecto1.Controllers
         {
             PersonaService con = new PersonaService();
             return Ok(con.ValidCajero(id, contrasena, money));
-        }        
-            
+        }
+
+        [HttpPost]
+        [Route("CrearCliente")]
+        public void CrearCliente([FromBody] Persona persona )
+        {
+            PersonaService con = new PersonaService();
+            con.CrearCliente(persona);
+        }
+
+
+
     }
 }
