@@ -11,8 +11,8 @@ using System.Data;
 namespace Proyecto1.Services
 {
     public class PersonaService
-    {        
-        public Boolean ValidCajero(int id,string contrasena,int money)
+    {
+        public Boolean ValidCajero(int id, string contrasena, int money)
         {
             Boolean ans = false;
             try
@@ -40,14 +40,15 @@ namespace Proyecto1.Services
                 conn.Close();
                 return ans;
             }
-            catch {
+            catch
+            {
                 return ans;
             }
-            
+
         }
-        public String sucursalcajero(string nombre,string apellido1,string apellido2)
+        public Persona sucursalcajero(int id)
         {
-            String ans = "";
+            Persona ans = new Persona();
             try
             {
                 NpgsqlConnection conn;
@@ -57,17 +58,22 @@ namespace Proyecto1.Services
                 conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
                 conn.Open();
 
-                command = new NpgsqlCommand("select * from validcajerologin(:pCname, :pLname1, :pLname2)", conn);
+                command = new NpgsqlCommand("select * from validcajerologin(:pId)", conn);
                 command.CommandType = CommandType.Text;
-                command.Parameters.AddWithValue("pCname", nombre);
-                command.Parameters.AddWithValue("pLname1", apellido1);
-                command.Parameters.AddWithValue("pLname2", apellido2);
+                command.Parameters.AddWithValue("pId", id);
+                
 
                 read = command.ExecuteReader();
 
+                
                 while (read.Read())
                 {
-                    ans = Convert.ToString(read["sucursalcajero"]);
+                    ans.Nombre = Convert.ToString(read["pnombre"]);
+                    ans.Apellido1 = Convert.ToString(read["papellido1"]);
+                    ans.Apellido2 = Convert.ToString(read["papellido2"]);
+                    ans.Sucursal = Convert.ToString(read["snombre"]);
+
+
                 }
                 read.Close();
                 conn.Close();
@@ -79,7 +85,7 @@ namespace Proyecto1.Services
             }
         }
 
-        public Boolean validSupervisor(int id,string contrasena) 
+        public Boolean validSupervisor(int id, string contrasena)
         {
             Boolean ans = false;
             try
@@ -114,9 +120,9 @@ namespace Proyecto1.Services
 
         public Boolean CrearCliente([FromBody] Persona persona)
         {
-            
+
             Boolean ans = false;
-           try
+            try
             {
                 NpgsqlConnection conn;
                 NpgsqlCommand command;
@@ -129,64 +135,61 @@ namespace Proyecto1.Services
                 IdCedula.Value = persona.IdCedula;
 
                 NpgsqlParameter Nombre = new NpgsqlParameter("pFname", NpgsqlTypes.NpgsqlDbType.Varchar);
-            Nombre.Value = persona.Nombre;
+                Nombre.Value = persona.Nombre;
 
-            NpgsqlParameter Apellido1 = new NpgsqlParameter("pLname1", NpgsqlTypes.NpgsqlDbType.Varchar);
-            Apellido1.Value = persona.Apellido1;
+                NpgsqlParameter Apellido1 = new NpgsqlParameter("pLname1", NpgsqlTypes.NpgsqlDbType.Varchar);
+                Apellido1.Value = persona.Apellido1;
 
-            NpgsqlParameter Apellido2 = new NpgsqlParameter("pLname2", NpgsqlTypes.NpgsqlDbType.Varchar);
-            Apellido2.Value = persona.Apellido2;
+                NpgsqlParameter Apellido2 = new NpgsqlParameter("pLname2", NpgsqlTypes.NpgsqlDbType.Varchar);
+                Apellido2.Value = persona.Apellido2;
 
-            NpgsqlParameter FechaNacimiento = new NpgsqlParameter("pBdate", NpgsqlTypes.NpgsqlDbType.Date);
-            FechaNacimiento.Value = Convert.ToDateTime(persona.FechaNacimiento);
+                NpgsqlParameter FechaNacimiento = new NpgsqlParameter("pBdate", NpgsqlTypes.NpgsqlDbType.Date);
+                FechaNacimiento.Value = Convert.ToDateTime(persona.FechaNacimiento);
 
-            NpgsqlParameter Telefono = new NpgsqlParameter("pTelefono", NpgsqlTypes.NpgsqlDbType.Integer);
-            Telefono.Value = persona.Telefono;
+                NpgsqlParameter Telefono = new NpgsqlParameter("pTelefono", NpgsqlTypes.NpgsqlDbType.Integer);
+                Telefono.Value = persona.Telefono;
 
-            NpgsqlParameter Distrito = new NpgsqlParameter("pDistrito", NpgsqlTypes.NpgsqlDbType.Varchar);
-            Distrito.Value = persona.Distrito;
+                NpgsqlParameter Distrito = new NpgsqlParameter("pDistrito", NpgsqlTypes.NpgsqlDbType.Varchar);
+                Distrito.Value = persona.Distrito;
 
-            NpgsqlParameter Direccion = new NpgsqlParameter("pDireccion", NpgsqlTypes.NpgsqlDbType.Varchar);
-            Direccion.Value = persona.Direccion;
+                NpgsqlParameter Direccion = new NpgsqlParameter("pDireccion", NpgsqlTypes.NpgsqlDbType.Varchar);
+                Direccion.Value = persona.Direccion;
 
-            NpgsqlParameter Contrasena = new NpgsqlParameter("pContrasena", NpgsqlTypes.NpgsqlDbType.Varchar);
-            Contrasena.Value = persona.Contrasena;
-
-
+                NpgsqlParameter Contrasena = new NpgsqlParameter("pContrasena", NpgsqlTypes.NpgsqlDbType.Varchar);
+                Contrasena.Value = persona.Contrasena;
 
 
 
 
-
-            command = new NpgsqlCommand("select * from createclient(:pId ,:pFname ,:pLname1 ,:pLname2 ,:pBdate ,:pTelefono ,:pDistrito ,:pDireccion ,:pContrasena)", conn);
+                command = new NpgsqlCommand("select * from createclient(:pId ,:pFname ,:pLname1 ,:pLname2 ,:pBdate ,:pTelefono ,:pDistrito ,:pDireccion ,:pContrasena)", conn);
                 command.CommandType = CommandType.Text;
 
                 command.Parameters.Add(IdCedula);
-            command.Parameters.Add(Nombre);
-            command.Parameters.Add(Apellido1);
-            command.Parameters.Add(Apellido2);
-            command.Parameters.Add(FechaNacimiento);
-            command.Parameters.Add(Telefono);
-            command.Parameters.Add(Distrito);
-            command.Parameters.Add(Direccion);
-            command.Parameters.Add(Contrasena);
+                command.Parameters.Add(Nombre);
+                command.Parameters.Add(Apellido1);
+                command.Parameters.Add(Apellido2);
+                command.Parameters.Add(FechaNacimiento);
+                command.Parameters.Add(Telefono);
+                command.Parameters.Add(Distrito);
+                command.Parameters.Add(Direccion);
+                command.Parameters.Add(Contrasena);
 
 
 
-            var a = command.ExecuteScalar();
+                var a = command.ExecuteScalar();
                 ans = Convert.ToBoolean(a);
-                
+
                 conn.Close();
                 return ans;
 
             }
             catch
             {
-              
+
                 return ans;
             }
 
-            
+
         }
         public Boolean CrearEmpleado([FromBody] Persona empleado)
         {
@@ -317,6 +320,7 @@ namespace Proyecto1.Services
 
 
         }
+
 
     }
 }

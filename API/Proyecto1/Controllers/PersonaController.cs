@@ -15,10 +15,10 @@ namespace Proyecto1.Controllers
     {
         [HttpGet]
         [Route("SucursalCajero")]
-        public IHttpActionResult SucursalCajero(string nombre,string apellido1,string apellido2)
+        public IHttpActionResult SucursalCajero(int id)
         {
             PersonaService con = new PersonaService();
-            return Ok(con.sucursalcajero(nombre, apellido1, apellido2));
+            return Ok(con.sucursalcajero(id));
         }
         [HttpGet]
         [Route("ValidCajero")]
@@ -36,11 +36,12 @@ namespace Proyecto1.Controllers
         }
         [HttpPost]
         [Route("CrearCliente")]
-        public void CrearCliente([FromBody] Persona persona )
+        public Boolean CrearCliente([FromBody] Persona persona )
         {
             PersonaService con = new PersonaService();
-            con.CrearCliente(persona);
+            return con.CrearCliente(persona);
         }
+
         [HttpPost]
         [Route("CrearEmpleado")]
         public Boolean CrearEmpleado([FromBody] Persona empleado)

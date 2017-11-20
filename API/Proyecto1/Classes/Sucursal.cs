@@ -14,6 +14,6 @@ namespace Proyecto1.Classes
         public string Canton { get; set; }
         public string DescripcionDireccion { get; set; }
         public string Compania { get; set; }
-        public string Administrador { get; set; }
+        public int Administrador { get; set; }
     }
 }
