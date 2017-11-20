@@ -15,10 +15,10 @@ namespace Proyecto1.Controllers
     {
         [HttpGet]
         [Route("SucursalCajero")]
-        public IHttpActionResult SucursalCajero(string nombre,string apellido1,string apellido2)
+        public IHttpActionResult SucursalCajero(int id)
         {
             PersonaService con = new PersonaService();
-            return Ok(con.sucursalcajero(nombre, apellido1, apellido2));
+            return Ok(con.sucursalcajero(id));
         }
         [HttpGet]
         [Route("ValidCajero")]
