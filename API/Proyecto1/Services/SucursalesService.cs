@@ -7,6 +7,10 @@ using System.Web.Http;
 using Npgsql;
 using System.Data;
 
+using CrystalDecisions.CrystalReports;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.ReportSource;
+
 namespace Proyecto1.Services
 {
     public class SucursalesService
@@ -32,10 +36,10 @@ namespace Proyecto1.Services
                 {
                     Sucursal sucursal = new Sucursal();
                     sucursal.Nombre = Convert.ToString(read["snombre"]);
-                    sucursal.Provincia= Convert.ToString(read["sprovincia"]);
-                    sucursal.Canton= Convert.ToString(read["scanton"]);
-                    sucursal.Distrito= Convert.ToString(read["sdistrito"]);
-                    sucursal.Direccion=Convert.ToString(read["sdireccion"]);
+                    sucursal.Provincia = Convert.ToString(read["sprovincia"]);
+                    sucursal.Canton = Convert.ToString(read["scanton"]);
+                    sucursal.Distrito = Convert.ToString(read["sdistrito"]);
+                    sucursal.Direccion = Convert.ToString(read["sdireccion"]);
                     ans.Add(sucursal);
                 }
                 read.Close();
@@ -55,7 +59,7 @@ namespace Proyecto1.Services
             {
                 NpgsqlConnection conn;
                 NpgsqlCommand command;
-                
+
 
                 conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
                 conn.Open();
@@ -72,7 +76,7 @@ namespace Proyecto1.Services
                 NpgsqlParameter Compania = new NpgsqlParameter("pCompania", NpgsqlTypes.NpgsqlDbType.Varchar);
                 Compania.Value = sucursal.Compania;
 
-                
+
                 NpgsqlParameter Administrador = new NpgsqlParameter("pAdministrador", NpgsqlTypes.NpgsqlDbType.Integer);
                 Administrador.Value = sucursal.Administrador;
 
@@ -85,7 +89,7 @@ namespace Proyecto1.Services
                 command.Parameters.Add(Direccion);
                 command.Parameters.Add(Compania);
                 command.Parameters.Add(Administrador);
-    
+
                 var a = command.ExecuteScalar();
                 ans = Convert.ToBoolean(a);
 
@@ -98,7 +102,28 @@ namespace Proyecto1.Services
 
                 return ans;
             }
-
         }
+
+
+        public string GetReporte()
+        {
+            CrystalReport1 objRpt;
+            ReportDocument rd = new ReportDocument();
+            objRpt = new CrystalReport1();
+            NpgsqlConnection conn;
+            NpgsqlCommand command;
+            Reportes ds = new Reportes();
+            conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+            command = new NpgsqlCommand("select * from cantones", conn);
+
+            NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command);
+            adapter.Fill(ds, "Cantones");
+            // rd.Load(Path.Combine(System.Web.Hosting.HostingEnvironment.MapPath("~/Reports"), "UserRegistration.rpt"));
+            objRpt.SetDataSource(ds);
+            rd.SetDataSource(ds);
+
+            return "";
+        }
+
     }
 }

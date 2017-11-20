@@ -49,6 +49,9 @@ namespace Proyecto1.Services
         public Persona sucursalcajero(int id)
         {
             Persona ans = new Persona();
+
+            
+
             try
             {
                 NpgsqlConnection conn;
@@ -57,11 +60,12 @@ namespace Proyecto1.Services
 
                 conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
                 conn.Open();
+                
 
-                command = new NpgsqlCommand("select * from validcajerologin(:pId)", conn);
+                command = new NpgsqlCommand("select * from sucursalcajero(:pId)", conn);
                 command.CommandType = CommandType.Text;
                 command.Parameters.AddWithValue("pId", id);
-                
+
 
                 read = command.ExecuteReader();
 
@@ -72,7 +76,6 @@ namespace Proyecto1.Services
                     ans.Apellido1 = Convert.ToString(read["papellido1"]);
                     ans.Apellido2 = Convert.ToString(read["papellido2"]);
                     ans.Sucursal = Convert.ToString(read["snombre"]);
-
 
                 }
                 read.Close();
