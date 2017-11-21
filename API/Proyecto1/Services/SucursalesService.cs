@@ -15,6 +15,33 @@ namespace Proyecto1.Services
 {
     public class SucursalesService
     {
+        public Boolean UpdateSucursal(int id, string nombre, int admin)
+        {
+            try
+            {
+                NpgsqlConnection conn;
+                NpgsqlCommand command;
+                NpgsqlDataReader read;
+
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                command = new NpgsqlCommand("update sucursales set nombre=:pNombre, administrador=:pAdmin where idsucursal=:pId", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                command.Parameters.AddWithValue("pNombre", nombre);
+                command.Parameters.AddWithValue("pAdmin", admin);
+
+                read = command.ExecuteReader();
+                read.Close();
+                conn.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public List<Sucursal> GetAllSucursales()
         {
             List<Sucursal> ans = new List<Sucursal>();

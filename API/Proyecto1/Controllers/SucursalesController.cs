@@ -22,6 +22,14 @@ namespace Proyecto1.Controllers
     [RoutePrefix("api/Sucursales")]
     public class SucursalesController : ApiController
     {
+
+        [HttpGet]
+        [Route("UpdateSucursal")]
+        public Boolean UpdateSucursal(int id, string nombre, int admin)
+        {
+            SucursalesService con = new SucursalesService();
+            return con.UpdateSucursal(id, nombre, admin);
+        }
         [HttpGet]
         [Route("GetAllSucursales")]
         public IHttpActionResult GetAllSucursales()
