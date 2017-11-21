@@ -45,7 +45,13 @@ namespace Proyecto1.Controllers
             return Ok(con.MasVendidosCajero(sucursal));
         }
 
-
+        [HttpPost]
+        [Route("CrearFactura")]
+        public IHttpActionResult CrearFactura([FromBody]Factura factura)
+        {
+            ProductoService con = new ProductoService();
+            return Ok(con.CrearFactura(factura));
+        }
 
 
     }

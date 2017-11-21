@@ -242,6 +242,51 @@ namespace Proyecto1.Services
         }
 
 
+        public int CrearFactura([FromBody]Factura factura)
+        {
+            int ans = 0;
+            try
+            {
+                NpgsqlConnection conn;
+                NpgsqlCommand command;
+                
 
+
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                NpgsqlParameter PeCedula = new NpgsqlParameter("pPeCedula", NpgsqlTypes.NpgsqlDbType.Integer);
+                PeCedula.Value = factura.PeCedula;
+
+                NpgsqlParameter CaCedula = new NpgsqlParameter("pCaCedula", NpgsqlTypes.NpgsqlDbType.Integer);
+                CaCedula.Value = factura.CaCedula;
+
+              /*  NpgsqlParameter Sucursal = new NpgsqlParameter("pSucursal", NpgsqlTypes.NpgsqlDbType.Varchar);
+                Sucursal.Value = factura.Sucursal;*/
+
+
+
+                command = new NpgsqlCommand("select * from savecompra(:pPeCedula,:pCaCedula )", conn);
+                command.CommandType = CommandType.Text;
+
+                command.Parameters.Add(PeCedula);
+                command.Parameters.Add(CaCedula);
+                //command.Parameters.Add(Sucursal);
+
+
+
+                var a = command.ExecuteScalar();
+                ans = Convert.ToInt32(a);
+
+
+                conn.Close();
+                return ans;
+
+            }
+            catch
+            {
+                return ans;
+            }
+        }
     }
 }
