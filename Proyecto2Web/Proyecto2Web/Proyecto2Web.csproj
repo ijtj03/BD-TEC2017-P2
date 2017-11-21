@@ -78,6 +78,7 @@
     <Content Include="rsc\vids\Thumbs.db" />
     <Content Include="Scripts - Web\Scripts - Caja\AddCliente.js" />
     <Content Include="Scripts - Web\Scripts - Caja\AddFactura.js" />
+    <Content Include="Scripts - Web\Scripts - Caja\AddProductos.js" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
