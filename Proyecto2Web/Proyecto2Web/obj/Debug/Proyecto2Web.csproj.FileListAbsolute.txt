@@ -7,3 +7,12 @@ C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\De
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Debug\Proyecto2Web.csproj.CoreCompileInputs.cache
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Debug\Proyecto2Web.dll
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Debug\Proyecto2Web.pdb
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\bin\Proyecto2Web.dll.config
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\bin\Proyecto2Web.dll
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\bin\Proyecto2Web.pdb
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Debug\Proyecto2Web.csprojResolveAssemblyReference.cache
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Debug\Proyecto2Web.csproj.CoreCompileInputs.cache
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Debug\Proyecto2Web.dll
+C:\Users\ijtj0\Desktop\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Debug\Proyecto2Web.pdb

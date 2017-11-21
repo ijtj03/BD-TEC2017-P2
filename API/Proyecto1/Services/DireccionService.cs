@@ -13,7 +13,7 @@ namespace Proyecto1.Services
     public class ProvinciaService
     {
         
-        public List<string> GetCantonesxProvincia(int id)
+        public List<string> GetCantonesxProvincia(string id)
         {
             List<string> ans = new List<string>();
             try
@@ -82,7 +82,7 @@ namespace Proyecto1.Services
             }
 
         }
-        public List<string> GetDistritosxCantones(int id)
+        public List<string> GetDistritosxCantones(string id)
         {
             List<string> ans = new List<string>();
             try

@@ -22,7 +22,7 @@ namespace Proyecto1.Controllers
         
         [HttpGet]
         [Route("GetDistritosxCanton")]
-        public IHttpActionResult GetDistritosxCantones(int id)
+        public IHttpActionResult GetDistritosxCantones(string id)
         {
             ProvinciaService con = new ProvinciaService();
             return Ok(con.GetDistritosxCantones(id));
@@ -30,7 +30,7 @@ namespace Proyecto1.Controllers
 
         [HttpGet]
         [Route("GetCantonesxProvincia")]
-        public IHttpActionResult GetCantonesxProvincia(int id)
+        public IHttpActionResult GetCantonesxProvincia(string id)
         {
             ProvinciaService con = new ProvinciaService();
             return Ok(con.GetCantonesxProvincia(id));
