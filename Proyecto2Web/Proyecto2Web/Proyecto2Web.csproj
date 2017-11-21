@@ -71,6 +71,7 @@
     <Content Include=".vs\slnx.sqlite" />
     <Content Include=".vs\VSWorkspaceState.json" />
     <Content Include=".vs\Web\v15\.suo" />
+    <Content Include="Caja\addFactura.html" />
     <Content Include="css\ABEAKRG.TTF" />
     <None Include="packages.config" />
     <Content Include="rsc\imgs\Thumbs.db" />
@@ -127,7 +128,6 @@
     <Content Include="Administracion\Sucursal\main.html" />
     <Content Include="Administracion\Sucursal\read.html" />
     <Content Include="Administracion\Sucursal\update.html" />
-    <Content Include="Caja\addFactura.html" />
     <Content Include="Caja\addProductos.html" />
     <Content Include="Caja\cierre.html" />
     <Content Include="Caja\eliminarProductoFact.html" />
