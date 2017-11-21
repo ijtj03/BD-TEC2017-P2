@@ -82,12 +82,12 @@
 						<center>
 							<div class="form-group">
 								<h3>Numero de Cedula</h3>
-								<input type="number" class="form-control" id="cedula">
+								<input type="number" class="form-control" id="cedula" ng-model="idcliente">
 							</div>
-							<button type="button" class="btn btn-default">Verificar Cliente</button>
-							<button type="button" class="btn btn-default">Registrar Cliente</button>
+							<button type="button" class="btn btn-default" ng-click="verificarcliente(idcliente)">Verificar Cliente</button>
+							<button type="button" class="btn btn-default" ng-click="registrar()">Registrar Cliente</button>
 							<div class="checkbox">
-								<label><input type="checkbox"> Usuario sin registro</label>
+								<label><input type="checkbox" ng-model="check"> Usuario sin registro</label>
 							</div>
 						</center>
 						<br><br>
@@ -96,7 +96,7 @@
 				<div>
 					<br /><br />
 					<br /><br />
-					<center><button type="button" class="btn btn-default">Crear Factura</button></center>
+					<center><button type="button" class="btn btn-default" ng-click="goProducts()">Crear Factura</button></center>
 					<br /><br />
 					<br /><br />
 				</div>

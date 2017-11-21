@@ -1,19 +1,18 @@
 ﻿<!DOCTYPE HTML>
-<html>
+<html ng-app="AddCliente">
 <head>
     <title>Registro Cliente</title>
 
     <!-- comentario: etiquetas META descriptiva para nuestro sitio web-->
     <meta charset='utf-8'><!-- Codificacion de documento para uso de caracteres-->
     <script src="../../Scripts/angular.js"></script>
-    <script src="../../Scripts - Views/Register.js"></script>
     <meta name='description' content='Laboratorio #1 HTML5-CSS3'>
     <meta name='keywords' content='HTML5,CSS3,JavaScript'>
     <link rel="shortcut icon" href="html5.png" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+    <script src="../Scripts - Web/Scripts - Caja/AddCliente.js"></script>
 
     <link rel='stylesheet' href='../css/styles.css'>
 </head>
@@ -34,7 +33,7 @@
 
             <br /><br />
             <section id='registro'>
-                <form>
+                <form ng-controller="AddClienteController">
                     <center>
                         <h2>REGISTRO</h2>
                         <input type="number" class='field' value='' placeholder='Cedula' name='txtcedula' ng-model="cedula" required />
@@ -49,22 +48,25 @@
                         <br><br>
                         <input type="password" class='field' value='' placeholder='Password' name='txtpass' ng-model="password" required />
                         <br><br>
-                        <select class="form-control">
-                            <option>dbProvincias</option> <!--con un repeat-->
+                        <h3>Provincia</h3>
+                        <select class="form-control" ng-model="prov" ng-change="getcantones()">
+                            <option ng-repeat="x in provincias">{{x}}</option>
                         </select>
-                        <select class="form-control">
-                            <option>dbCantonesxProvincia</option> <!--con un repeat-->
+                        <h3>Canton</h3>
+                        <select class="form-control" ng-model="cant" ng-change="getdistritos()">
+                            <option ng-repeat="x in cantones">{{x}}</option>
                         </select>
-                        <select class="form-control">
-                            <option>dbDistritosxCanton</option> <!--con un repeat-->
+                        <h3>Distrito</h3>
+                        <select class="form-control" ng-model="dis">
+                            <option ng-repeat="x in distritos">{{x}}</option>
                         </select>
                         <br><br>
                         <input type="text" class='field' value='' placeholder='Direccion' name='txtdir' ng-model="direccion" required />
                         <br><br>
-                        <input type="date" class='field' value='' placeholder='Fecha Nacimiento' name='txtFechaNac' ng-model="fecha" required />
+                        <input type="date" class='field' value='' placeholder='Fecha Nacimiento' name='txtFechaNac' ng-model="fecha" required id="fech"/>
                         <br><br>
-
-                        <button type="button" class="button button-primary">Registrar Cliente</button>
+                        
+                        <button type="button" class="button button-primary" ng-click="addcliente()">Registrar Cliente</button>
                     </center>
                 </form>
 

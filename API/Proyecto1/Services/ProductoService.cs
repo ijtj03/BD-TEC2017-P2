@@ -40,7 +40,7 @@ namespace Proyecto1.Services
                 return false;
             }
         }
-        public List<Producto> ProductosxFactura(int idfactura)
+        public List<Producto> ProductosxFactura(int idfactura, string sucursal)
         {
             List<Producto> ans = new List<Producto>();
             try
@@ -52,10 +52,15 @@ namespace Proyecto1.Services
                 conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
                 conn.Open();
 
-                command = new NpgsqlCommand("select pr.nombre,pr.idproducto,pf.cantidad from productosxfacturas as pf inner join productos as pr on pr.idproducto=pf.idproducto where pf.idfactura = :pId", conn);
+                NpgsqlParameter Sucursal = new NpgsqlParameter("pSucursal", NpgsqlTypes.NpgsqlDbType.Varchar);
+                Sucursal.Value = sucursal;
+
+
+                command = new NpgsqlCommand("select pr.nombre,pr.idproducto,pf.cantidad,ps.precio from productosxfacturas as pf inner join productos as pr on pr.idproducto=pf.idproducto  inner join productosxsucursales as ps on ps.idproducto=pf.idproducto inner join sucursales as s on s.idsucursal=ps.idsucursal where pf.idfactura = :pId and pf.logicdelete=false and s.nombre=:pSucursal", conn);
                 command.CommandType = CommandType.Text;
 
                 command.Parameters.AddWithValue("pId",idfactura);
+                command.Parameters.Add(Sucursal);
 
                 read = command.ExecuteReader();
 
@@ -65,6 +70,7 @@ namespace Proyecto1.Services
                     p.Nombre = Convert.ToString(read["nombre"]);
                     p.IdProducto = Convert.ToInt32(read["idproducto"]);
                     p.Cantidad = Convert.ToInt32(read["cantidad"]);
+                    p.Precio = Convert.ToInt32(read["precio"]);
                     ans.Add(p); 
                 }
                 read.Close();

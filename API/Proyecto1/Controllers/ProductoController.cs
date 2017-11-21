@@ -30,10 +30,10 @@ namespace Proyecto1.Controllers
 
         [HttpGet]
         [Route("ProductosxFactura")]
-        public IHttpActionResult ProductosxFactura(int idfactura)
+        public IHttpActionResult ProductosxFactura(int idfactura,string sucursal)
         {
             ProductoService con = new ProductoService();
-            return Ok(con.ProductosxFactura(idfactura));
+            return Ok(con.ProductosxFactura(idfactura,sucursal));
         }
 
         [HttpGet]

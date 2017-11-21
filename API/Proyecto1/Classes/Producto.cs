@@ -12,5 +12,6 @@ namespace Proyecto1.Classes
         public int IdProducto { get; set; }
         public Boolean LogicDelete { get; set; }
         public int Cantidad { get; set; }
+        public int Precio { get; set; }
     }
 }

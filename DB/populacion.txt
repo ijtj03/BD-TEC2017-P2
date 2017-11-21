@@ -95,7 +95,6 @@ insert into distritos(iddistrito,nombre) values(20,'Liberia');
 insert into distritos(iddistrito,nombre) values(21,'Mansion');
 insert into distritos(iddistrito,nombre) values(22,'Bolson');
 insert into distritos(iddistrito,nombre) values(23,'Puntarenas');
-insert into distritos(iddistrito,nombre) values(24,'San Rafael');
 insert into distritos(iddistrito,nombre) values(25,'Cortes');
 insert into distritos(iddistrito,nombre) values(26,'Quepos');
 insert into distritos(iddistrito,nombre) values(27,'Limon');
@@ -126,7 +125,6 @@ insert into distritosxcantones(iddistrito,idcanton) values(20,20);
 insert into distritosxcantones(iddistrito,idcanton) values(21,21);
 insert into distritosxcantones(iddistrito,idcanton) values(22,22);
 insert into distritosxcantones(iddistrito,idcanton) values(23,23);
-insert into distritosxcantones(iddistrito,idcanton) values(24,24);
 insert into distritosxcantones(iddistrito,idcanton) values(25,25);
 insert into distritosxcantones(iddistrito,idcanton) values(26,26);
 insert into distritosxcantones(iddistrito,idcanton) values(27,27);
@@ -147,34 +145,35 @@ insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimien
 insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (333333331,'cliente','cliente','cliente',33333333,'1997-05-10','client');
 insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (333333332,'cliente1','cliente1','cliente1',33333333,'1997-06-02','client');
 insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (333333333,'cliente2','cliente2','cliente2',33333333,'1997-01-09','client');
+insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (999999999,'default','cliente','cliente',99999999,'1999-09-09','clientDefault');
 
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111111,6);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111112,12);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111113,15);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111114,3);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111115,20);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(000000001,23);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(000000002,25);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(222222221,10);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(333333331,12);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(333333332,12);
-insert into personasxdistritos(idcedula,iddistrito,direccion) values(333333333,12);
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111111,6,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111112,12,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111113,15,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111114,3,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(111111115,20,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(000000001,23,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(000000002,25,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(222222221,10,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(333333331,12,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(333333332,12,'dir');
+insert into personasxdistritos(idcedula,iddistrito,direccion) values(333333333,12,'dir');
 
 insert into companias(nombre) values('Fishel');
 insert into companias(nombre) values('Bomba Tica');
 
-insert into sucursales(nombre,iddireccion,administrador) values('Fishel 1',1,000000001);
-insert into sucursales(nombre,iddireccion,administrador) values('Fishel 2',1,000000001);
-insert into sucursales(nombre,iddireccion,administrador) values('Fishel 3',1,000000001);
-insert into sucursales(nombre,iddireccion,administrador) values('Bomba Tica 1',1,000000002);
-insert into sucursales(nombre,iddireccion,administrador) values('Bomba Tica 2',1,000000002);
-insert into sucursales(nombre,iddireccion,administrador) values('Bomba Tica 3',1,000000002);
-insert into sucursales(nombre,iddireccion,administrador) values('Bomba Tica 4',1,000000002);
+insert into sucursales(nombre,administrador) values('Fishel 1',000000001);
+insert into sucursales(nombre,administrador) values('Fishel 2',000000001);
+insert into sucursales(nombre,administrador) values('Fishel 3',000000001);
+insert into sucursales(nombre,administrador) values('Bomba Tica 1',000000002);
+insert into sucursales(nombre,administrador) values('Bomba Tica 2',000000002);
+insert into sucursales(nombre,administrador) values('Bomba Tica 3',000000002);
+insert into sucursales(nombre,administrador) values('Bomba Tica 4',000000002);
 
 insert into sucursalesxcompanias(idsucursal,idcompania) values(1,1);
 insert into sucursalesxcompanias(idsucursal,idcompania) values(2,1);
 insert into sucursalesxcompanias(idsucursal,idcompania) values(3,1);
-insert into sucursalesxcompanias(idsucursal,idcompania) values(4,2);
+insert into sucursalesxcompanias(idsucursal,idcompania) values(4,1);
 insert into sucursalesxcompanias(idsucursal,idcompania) values(5,2);
 insert into sucursalesxcompanias(idsucursal,idcompania) values(6,2);
 insert into sucursalesxcompanias(idsucursal,idcompania) values(7,2);
@@ -284,6 +283,7 @@ insert into rolesxpersonas (idcedula,idrol) values(222222221,4);
 insert into rolesxpersonas (idcedula,idrol) values(333333331,3);
 insert into rolesxpersonas (idcedula,idrol) values(333333332,3);
 insert into rolesxpersonas (idcedula,idrol) values(333333333,3);
+insert into rolesxpersonas (idcedula,idrol) values(999999999,3);
 
 insert into cajas(fechainicial,fechafinal,dineroinicial,dinerofinal) values('2017-11-20','2017-11-20',0,0);
 insert into cajas(fechainicial,fechafinal,dineroinicial,dinerofinal) values('2017-11-20','2017-11-20',0,0);
@@ -300,6 +300,7 @@ insert into cajas(fechainicial,fechafinal,dineroinicial,dinerofinal) values('201
 insert into cajas(fechainicial,fechafinal,dineroinicial,dinerofinal) values('2017-11-20','2017-11-20',0,0);
 insert into cajas(fechainicial,fechafinal,dineroinicial,dinerofinal) values('2017-11-20','2017-11-20',0,0);
 insert into cajas(fechainicial,fechafinal,dineroinicial,dinerofinal) values('2017-11-20','2017-11-20',0,0);
+
 
 insert into cajasxsucursales(idsucursal,idcaja) values(1,1);
 insert into cajasxsucursales(idsucursal,idcaja) values(1,2);
@@ -316,7 +317,6 @@ insert into cajasxsucursales(idsucursal,idcaja) values(6,12);
 insert into cajasxsucursales(idsucursal,idcaja) values(6,13);
 insert into cajasxsucursales(idsucursal,idcaja) values(7,14);
 insert into cajasxsucursales(idsucursal,idcaja) values(7,15);
-insert into cajasxsucursales(idsucursal,idcaja) values(7,16);
 
 insert into cajasxpersonas(idcaja,idcedula) values(3,111111111);
 insert into cajasxpersonas(idcaja,idcedula) values(14,111111112);
@@ -340,10 +340,10 @@ insert into formapagosxfacturas(idfactura,idformapago) values(1,1);
 insert into formapagosxfacturas(idfactura,idformapago) values(2,1);
 insert into formapagosxfacturas(idfactura,idformapago) values(3,1);
 
-insert into ProductosxFacturas(idfactura,idproducto) values(1,1);
-insert into ProductosxFacturas(idfactura,idproducto) values(1,5);
-insert into ProductosxFacturas(idfactura,idproducto) values(1,8);
-insert into ProductosxFacturas(idfactura,idproducto) values(1,9);
+insert into ProductosxFacturas(idfactura,idproducto,cantidad) values(1,1,10);
+insert into ProductosxFacturas(idfactura,idproducto,cantidad) values(1,5,10);
+insert into ProductosxFacturas(idfactura,idproducto,cantidad) values(1,8,10);
+insert into ProductosxFacturas(idfactura,idproducto,cantidad) values(1,9,10);
 
 insert into ProductosxFacturas(idfactura,idproducto) values(2,1);
 insert into ProductosxFacturas(idfactura,idproducto) values(2,17);
@@ -352,3 +352,6 @@ insert into ProductosxFacturas(idfactura,idproducto) values(2,13);
 insert into ProductosxFacturas(idfactura,idproducto) values(3,1);
 insert into ProductosxFacturas(idfactura,idproducto) values(3,7);
 insert into ProductosxFacturas(idfactura,idproducto) values(3,8);
+
+
+

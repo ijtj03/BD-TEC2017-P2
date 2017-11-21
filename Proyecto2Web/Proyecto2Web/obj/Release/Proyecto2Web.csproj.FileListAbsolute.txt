@@ -6,3 +6,4 @@ C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\bin\Mi
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Release\Proyecto2Web.csproj.CoreCompileInputs.cache
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Release\Proyecto2Web.dll
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Release\Proyecto2Web.pdb
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\Proyecto2Web\Proyecto2Web\obj\Release\Proyecto2Web.csprojResolveAssemblyReference.cache
