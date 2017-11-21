@@ -49,7 +49,13 @@ namespace Proyecto1.Controllers
             PersonaService con = new PersonaService();
             return con.CrearEmpleado(empleado);
         }
-
+        [HttpGet]
+        [Route("UpdateProveedor")]
+        public Boolean UpdateProveedor(int id, string nombre,string des)
+        {
+            PersonaService con = new PersonaService();
+            return con.UpdateProveedor( id,  nombre,  des);
+        }
         [HttpPost]
         [Route("CrearProveedor")]
         public Boolean CrearProveedor([FromBody] Proveedor proveedor)

@@ -13,6 +13,43 @@ namespace Proyecto1.Services
 {
     public class ProductoService
     {
+        public List<Producto> ProductosxFactura(int idfactura)
+        {
+            List<Producto> ans = new List<Producto>();
+            try
+            {
+                NpgsqlConnection conn;
+                NpgsqlCommand command;
+                NpgsqlDataReader read;
+
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                command = new NpgsqlCommand("select pr.nombre,pr.idproducto,pf.cantidad from productosxfacturas as pf inner join productos as pr on pr.idproducto=pf.idproducto where pf.idfactura = :pId", conn);
+                command.CommandType = CommandType.Text;
+
+                command.Parameters.AddWithValue("pId",idfactura);
+
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    Producto p = new Producto();
+                    p.Nombre = Convert.ToString(read["nombre"]);
+                    p.IdProducto = Convert.ToInt32(read["idproducto"]);
+                    p.Cantidad = Convert.ToInt32(read["cantidad"]);
+                    ans.Add(p); 
+                }
+                read.Close();
+                conn.Close();
+                return ans;
+
+            }
+            catch
+            {
+                return ans;
+            }
+        }
         public Boolean AgregarProducto(int idfactura, int idproducto, int cantidad)
         {
             Boolean ans = false;

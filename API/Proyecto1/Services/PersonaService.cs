@@ -50,7 +50,7 @@ namespace Proyecto1.Services
         {
             Persona ans = new Persona();
 
-            
+
 
             try
             {
@@ -60,7 +60,7 @@ namespace Proyecto1.Services
 
                 conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
                 conn.Open();
-                
+
 
                 command = new NpgsqlCommand("select * from sucursalcajero(:pId)", conn);
                 command.CommandType = CommandType.Text;
@@ -69,7 +69,7 @@ namespace Proyecto1.Services
 
                 read = command.ExecuteReader();
 
-                
+
                 while (read.Read())
                 {
                     ans.Nombre = Convert.ToString(read["pnombre"]);
@@ -87,7 +87,34 @@ namespace Proyecto1.Services
                 return ans;
             }
         }
+        
+        public Boolean UpdateProveedor(int id, string nombre, string des)
+        {
+            //try
+            //{
+                NpgsqlConnection conn;
+                NpgsqlCommand command;
+                NpgsqlDataReader read;
 
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                command = new NpgsqlCommand("update proveedores set nombre=:pNombre, descripcion=:pDes where idproveedor=:pId", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                command.Parameters.AddWithValue("pNombre", nombre);
+                command.Parameters.AddWithValue("pDes", des);
+
+                read = command.ExecuteReader();
+                read.Close();
+                conn.Close();
+                return true;
+                /*}
+                catch
+                {
+                    return false;
+                }*/
+            }
         public Boolean validSupervisor(int id, string contrasena)
         {
             Boolean ans = false;
@@ -351,11 +378,11 @@ namespace Proyecto1.Services
 
                     p.IdCedula = Convert.ToInt32(read["idcedula"]);
                     l.Add(p);
-                   
+
                 }
 
 
-                foreach(var i in l)
+                foreach (var i in l)
                 {
                     if (id == i.IdCedula)
                     {

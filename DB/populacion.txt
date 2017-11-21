@@ -133,8 +133,8 @@ insert into distritosxcantones(iddistrito,idcanton) values(27,27);
 insert into distritosxcantones(iddistrito,idcanton) values(28,28);
 insert into distritosxcantones(iddistrito,idcanton) values(29,29);
 
-insert into Proveedores(nombre,codigo_ean,descripcion) values('Provedor1',11131,'Provedor de dulces');
-insert into Proveedores(nombre,codigo_ean,descripcion) values('Provedor2',11132,'Provedor de medicamentos');
+insert into Proveedores(nombre,descripcion) values('Provedor1','Provedor de dulces');
+insert into Proveedores(nombre,descripcion) values('Provedor2','Provedor de medicamentos');
 
 insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (111111111,'cajero','cajero','cajero',88888888,'1997-10-03','cajero');
 insert into personas (idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) values (111111112,'cajero1','cajero1','cajero1',88888888,'1997-10-04','cajero');

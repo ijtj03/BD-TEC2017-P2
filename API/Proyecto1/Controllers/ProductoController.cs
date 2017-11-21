@@ -22,6 +22,14 @@ namespace Proyecto1.Controllers
         }
 
         [HttpGet]
+        [Route("ProductosxFactura")]
+        public IHttpActionResult ProductosxFactura(int idfactura)
+        {
+            ProductoService con = new ProductoService();
+            return Ok(con.ProductosxFactura(idfactura));
+        }
+
+        [HttpGet]
         [Route("BorrarProducto")]
         public IHttpActionResult BorrarProducto(int idfactura, int idproducto, int cantidad)
         {
