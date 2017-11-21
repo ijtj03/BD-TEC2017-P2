@@ -87,11 +87,11 @@ namespace Proyecto1.Services
                 return ans;
             }
         }
-        
+
         public Boolean UpdateProveedor(int id, string nombre, string des)
         {
-            //try
-            //{
+            try
+            {
                 NpgsqlConnection conn;
                 NpgsqlCommand command;
                 NpgsqlDataReader read;
@@ -109,12 +109,12 @@ namespace Proyecto1.Services
                 read.Close();
                 conn.Close();
                 return true;
-                /*}
-                catch
-                {
-                    return false;
-                }*/
             }
+            catch
+            {
+                return false;
+            }
+        }
         public Boolean validSupervisor(int id, string contrasena)
         {
             Boolean ans = false;

@@ -12,6 +12,13 @@ namespace Proyecto1.Controllers
     [RoutePrefix("api/Productos")]
     public class ProductoController : ApiController
     {
+        [HttpGet]
+        [Route("UpdateProducto")]
+        public Boolean UpdateProducto(int id, string nombre, string des)
+        {
+            ProductoService con = new ProductoService();
+            return con.UpdateProducto(id, nombre, des);
+        }
 
         [HttpGet]
         [Route("AgregarProducto")]

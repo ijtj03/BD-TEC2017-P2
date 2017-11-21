@@ -13,6 +13,33 @@ namespace Proyecto1.Services
 {
     public class ProductoService
     {
+        public Boolean UpdateProducto(int id, string nombre, string des)
+        {
+            try
+            {
+                NpgsqlConnection conn;
+                NpgsqlCommand command;
+                NpgsqlDataReader read;
+
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                command = new NpgsqlCommand("update productos set nombre=:pNombre, descripcion=:pDes where idproducto=:pId", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                command.Parameters.AddWithValue("pNombre", nombre);
+                command.Parameters.AddWithValue("pDes", des);
+
+                read = command.ExecuteReader();
+                read.Close();
+                conn.Close();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         public List<Producto> ProductosxFactura(int idfactura)
         {
             List<Producto> ans = new List<Producto>();
