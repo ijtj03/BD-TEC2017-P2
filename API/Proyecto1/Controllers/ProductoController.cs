@@ -15,18 +15,18 @@ namespace Proyecto1.Controllers
 
         [HttpGet]
         [Route("AgregarProducto")]
-        public IHttpActionResult AgregarProducto(int idfactura, int ean, int cantidad)
+        public IHttpActionResult AgregarProducto(int idfactura, int idproducto, int cantidad)
         {
             ProductoService con = new ProductoService();
-            return Ok(con.AgregarProducto(idfactura,ean,cantidad));
+            return Ok(con.AgregarProducto(idfactura, idproducto, cantidad));
         }
 
         [HttpGet]
         [Route("BorrarProducto")]
-        public IHttpActionResult BorrarProducto(int idfactura, int ean, int cantidad)
+        public IHttpActionResult BorrarProducto(int idfactura, int idproducto, int cantidad)
         {
             ProductoService con = new ProductoService();
-            return Ok(con.BorrarProducto(idfactura, ean, cantidad));
+            return Ok(con.BorrarProducto(idfactura, idproducto, cantidad));
         }
 
         [HttpGet]

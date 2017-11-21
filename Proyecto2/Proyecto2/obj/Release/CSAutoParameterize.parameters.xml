@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="Proyecto2Entities-Web.config Connection String" description="Proyecto2Entities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/Proyecto2DataModel.csdl|res://*/Proyecto2DataModel.ssdl|res://*/Proyecto2DataModel.msl;provider=Npgsql;provider connection string=&quot;Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require&quot;" tags="SqlConnectionString">
-    <parameterEntry kind="XmlFile" scope="C:\\Users\\esteb\\OneDrive\\Documents\\Proyecto2\\Proyecto2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Proyecto2Entities']/@connectionString" />
-  </parameter>
-</parameters>

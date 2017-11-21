@@ -9,7 +9,7 @@ namespace Proyecto1.Classes
     {
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
-        public int EAN { get; set; }
+        public int IdProducto { get; set; }
         public Boolean LogicDelete { get; set; }
         public int Cantidad { get; set; }
     }

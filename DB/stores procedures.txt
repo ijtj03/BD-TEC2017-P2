@@ -1,0 +1,594 @@
+CREATE OR REPLACE FUNCTION public.createclient(
+	cedula integer,
+	fname character varying,
+	lname1 character varying,
+	lname2 character varying,
+	fecha date,
+	phone integer,
+	distrito character varying,
+	address character varying,
+	pcontrasena character varying)
+  RETURNS boolean
+AS $$
+DECLARE
+	id_distrito Distritos.iddistrito%TYPE;
+    text_var1 text;
+  	text_var2 text;
+BEGIN
+    INSERT INTO Personas(idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) VALUES (Cedula,Fname,Lname1,Lname2,Phone,Fecha,pcontrasena);
+    SELECT distritos.iddistrito INTO id_distrito FROM distritos WHERE distritos.nombre=Distrito;
+    INSERT INTO personasxdistritos(iddistrito,idcedula,direccion) VALUES(id_distrito,Cedula,Address);
+    INSERT INTO rolesxpersonas(idcedula,idrol) VALUES(Cedula,3);
+    Return True;
+    EXCEPTION WHEN others then
+            GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                    text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False; 
+END;
+
+$$LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION public.createemployee(
+  cedula integer,
+  fname character varying,
+  lname1 character varying,
+  lname2 character varying,
+  fecha date,
+  phone integer,
+  distrito character varying,
+  address character varying,
+  pcontrasena character varying,
+  rol character varying,
+  snombre character varying)
+  RETURNS boolean
+
+AS $$
+DECLARE
+  id_distrito Distritos.iddistrito%TYPE;
+    id_rol int;
+    id_sucursal int;
+    text_var1 text;
+    text_var2 text;
+BEGIN
+  
+    INSERT INTO Personas(idcedula,nombre,apellido1,apellido2,telefono,fechanacimiento,contrasena) VALUES (Cedula,Fname,Lname1,Lname2,Phone,Fecha,pcontrasena);
+
+    SELECT distritos.iddistrito INTO id_distrito FROM distritos WHERE distritos.nombre=Distrito;
+    INSERT INTO personasxdistritos(iddistrito,idcedula,direccion) VALUES(id_distrito,Cedula,Address);
+
+  SELECT roles.idrol INTO id_rol FROM roles WHERE roles.nombre=Rol;
+    INSERT INTO rolesxpersonas(idcedula,idrol) VALUES(Cedula,id_rol);
+    
+    SELECT sucursales.idsucursal INTO id_sucursal FROM sucursales WHERE sucursales.nombre=snombre;
+    INSERT INTO PersonasxSucursales(idsucursal,idcedula) VALUES(id_sucursal,Cedula);
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.createproduct(
+  pnombre character varying,
+  pdescripcion character varying)
+  RETURNS boolean
+    
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+  INSERT INTO Productos(nombre,descripcion) VALUES(Pnombre,Pdescripcion);
+  Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.createprovedor(
+  pnombre character varying,
+  pdescripcion character varying,
+  ean integer)
+  RETURNS boolean
+    
+
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+  INSERT INTO Proveedores(nombre,descripcion,codigo_ean) VALUES(Pnombre,Pdescripcion,EAN);
+    Return True;
+    EXCEPTION WHEN others then
+            GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                    text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.createsucursal(
+  snombre character varying,
+  distrito character varying,
+  address character varying,
+  cnombre character varying,
+  idadministrador integer)
+  RETURNS boolean
+    
+
+AS $$
+
+DECLARE
+  id_distrito Distritos.iddistrito%TYPE;
+    id_compania Companias.idcompania%TYPE;
+    id_sucursal int;
+    text_var1 text;
+    text_var2 text;
+BEGIN
+  SELECT companias.idcompania INTO id_compania FROM companias WHERE companias.nombre=Cnombre;
+    INSERT INTO Sucursales(Nombre,iddireccion,administrador) VALUES (Snombre,1,idadministrador) RETURNING idsucursal INTO id_sucursal;
+    SELECT distritos.iddistrito INTO id_distrito FROM distritos WHERE distritos.nombre=Distrito;
+    INSERT INTO SucursalesxDistritos(idsucursal,iddistrito,Direccion) VALUES(id_sucursal,id_distrito,Address);
+    INSERT INTO SucursalesxCompanias(idsucursal,idcompania) VALUES(id_sucursal,id_compania);
+    Return True;
+    EXCEPTION WHEN others then
+            GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                    text_var2 = PG_EXCEPTION_HINT;
+           RAISE NOTICE 'Message Error:%',text_var1;
+           RAISE NOTICE 'Hint:%',text_var2;
+           Return False;
+    
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.getallcantones(
+  )
+  RETURNS TABLE(id_canton integer, canton_nombre character varying) 
+
+AS $$
+
+BEGIN
+ RETURN QUERY SELECT
+ idcanton,
+ nombre
+ FROM
+ cantones;
+END; 
+$$LANGUAGE 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION public.getalldistritos(
+  )
+    RETURNS TABLE(id_distrito integer, distrito_nombre character varying) 
+    
+
+AS $$
+
+BEGIN
+ RETURN QUERY SELECT
+ iddistrito,
+ nombre
+ FROM
+ distritos;
+END; 
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.deleteproduct(
+  id_factura integer,
+  id_producto integer)
+    RETURNS boolean
+    
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+    UPDATE ProductosxFacturas as PF SET LogicDelete=True WHERE PF.idfactura=id_factura AND PF.idproducto=id_producto;
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.getallprovincias(
+  )
+    RETURNS TABLE(id_provincia integer, provincia_nombre character varying) 
+    
+AS $$
+
+BEGIN
+ RETURN QUERY SELECT
+ idprovincia,
+ nombre
+ FROM
+ provincias;
+END; 
+$$LANGUAGE 'plpgsql';
+
+
+
+
+CREATE OR REPLACE FUNCTION public.getcantonesprovincia(
+  pnombre character varying)
+    RETURNS TABLE(canton_nombre character varying) 
+    
+
+AS $$
+
+BEGIN
+  return query select c.nombre from cantones as c inner join cantonesxprovincias as cp on c.idcanton=cp.idcanton  
+    inner join provincias as pr on pr.idprovincia=cp.idprovincia
+    where pr.nombre=pnombre;          
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION public.getdiruser(
+  ncedula integer)
+    RETURNS TABLE(distrito character varying, canton character varying, provincia character varying, direccion character varying) 
+    
+AS $$
+BEGIN
+    RETURN QUERY SELECT
+    d.nombre,c.nombre,p.nombre,pd.direccion FROM ((((personasxdistritos as pd INNER JOIN distritos as d ON pd.iddistrito=d.iddistrito)
+INNER JOIN distritosxcantones as dc ON d.iddistrito=dc.iddistrito) INNER JOIN cantones as c ON c.idcanton=dc.idcanton)
+INNER JOIN cantonesxprovincias as cp ON cp.idcanton=c.idcanton) INNER JOIN provincias as p ON p.idprovincia=cp.idprovincia
+where pd.idcedula=NCedula AND pd.logicdelete=false;
+COMMIT;
+
+EXCEPTION
+    WHEN others then
+        RAISE NOTICE 'No se pudo obtener la dirreccion';       
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.getdistritoscanton(
+  pnombre character varying)
+    RETURNS TABLE(distrito_nombre character varying) 
+    
+
+AS $$
+
+BEGIN
+  return query select c.nombre from distritos as c inner join distritosxcantones as cp on c.iddistrito=cp.iddistrito  
+    inner join cantones as can on can.idcanton=cp.idcanton
+    where can.nombre=pnombre;          
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.getsucursales(
+  )
+    RETURNS TABLE(snombre character varying, sprovincia character varying, scanton character varying, sdistrito character varying, sdireccion character varying) 
+    
+
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+  RETURN QUERY SELECT S.nombre,p.nombre,c.nombre,d.nombre,sd.direccion FROM 
+    (((((sucursalesxdistritos as sd INNER JOIN Sucursales AS S ON s.idsucursal=sd.idsucursal)INNER JOIN distritos as d ON sd.iddistrito=d.iddistrito)
+    INNER JOIN distritosxcantones as dc ON d.iddistrito=dc.iddistrito) INNER JOIN cantones as c ON c.idcanton=dc.idcanton)
+    INNER JOIN cantonesxprovincias as cp ON cp.idcanton=c.idcanton) INNER JOIN provincias as p ON p.idprovincia=cp.idprovincia
+    where  sd.logicdelete=false;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION public.insertproduct(
+  id_factura integer,
+  id_producto integer,
+  pcantidad integer)
+    RETURNS boolean
+
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+    INSERT INTO ProductosxFacturas(idfactura,idproducto,cantidad) VALUES(id_factura,id_producto,Pcantidad);
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION public.masvendidoscajero(
+  cnombre character varying)
+    RETURNS TABLE(pnombre character varying, pcantidad integer) 
+    
+
+AS $$
+
+DECLARE
+  person_id int;
+  text_var1 text;
+    text_var2 text;
+BEGIN
+  SELECT Personas.idcedula INTO person_id FROM Personas WHERE Personas.nombre=Cnombre;
+  RETURN QUERY SELECT P.nombre,SUM(PF.cantidad) AS CantidadTotal FROM
+    (ProductosxFacturas AS PF INNER JOIN Productos AS P ON PF.idproducto=P.idproducto) 
+    INNER JOIN FacturasxCajeros AS FC ON FC.idfactura=PF.idfactura
+    WHERE FC.idcedula=person_id AND PF.logicdelete=false
+    GROUP BY PF.idproducto
+    ORDER BY CantidadTotal DESC
+    FETCH first 20 rows only;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+
+
+CREATE OR REPLACE FUNCTION public.masvendidossucursal(
+  snombre character varying)
+    RETURNS TABLE(pnombre character varying, pcantidad integer) 
+    
+
+AS $$
+
+DECLARE
+  su_id int;
+  text_var1 text;
+    text_var2 text;
+BEGIN
+  SELECT Sucursales.idsucursal INTO su_id FROM Sucursales WHERE Sucursales.nombre=Snombre;
+  RETURN QUERY SELECT P.nombre,SUM(PF.cantidad) AS CantidadTotal FROM
+    (ProductosxFacturas AS PF INNER JOIN Productos AS P ON PF.idproducto=P.idproducto) 
+    INNER JOIN FacturasxSucursales AS FS ON FS.idfactura=PF.idfactura
+    WHERE FS.idsucursal=su_id AND PF.logicdelete=false
+    GROUP BY PF.idproducto
+    ORDER BY CantidadTotal DESC
+    FETCH first 20 rows only;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION public.productomasvendidos(
+  )
+    RETURNS TABLE(pnombre character varying, pcantidad integer) 
+    
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+  RETURN QUERY SELECT P.nombre,SUM(PF.cantidad) AS CantidadTotal FROM
+    ProductosxFacturas AS PF INNER JOIN Productos AS P ON PF.idproducto=P.idproducto
+    WHERE PF.logicdelete=False
+    GROUP BY PF.idproducto
+    ORDER BY CantidadTotal DESC
+    FETCH first 20 rows only;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION public.savecompra(
+  cedula integer,
+  cacedula integer)
+    RETURNS integer
+
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+    id_factura int;
+    id_sucursal int;
+    consecutivo int;
+    x int;
+BEGIN
+  INSERT INTO Facturas(fecha) VALUES(now()::date) RETURNING idfactura INTO id_factura;
+    
+    INSERT INTO FacturasxPersonas(idcedula,idfactura) VALUES(Cedula,id_factura);
+    INSERT INTO FacturasxCajeros(idcedula,idfactura) VALUES(CaCedula,id_factura);
+    
+    SELECT PS.idsucursal INTO id_sucursal FROM PersonasxSucursales AS PS WHERE PS.idcedula=cacedula;
+    
+    SELECT MAX(FS.numeroconsecutivo) INTO consecutivo FROM FacturasxSucursales AS FS WHERE FS.idsucursal=id_sucursal;
+    IF consecutivo IS NULL THEN
+      INSERT INTO FacturasxSucursales(idsucursal,idfactura,numeroconsecutivo) VALUES(id_sucursal,id_factura,1);
+    ELSE
+      consecutivo := consecutivo + 1;
+        INSERT INTO FacturasxSucursales(idsucursal,idfactura,numeroconsecutivo) VALUES(id_sucursal,id_factura,consecutivo);
+    END IF;
+    Return id_factura;
+    EXCEPTION WHEN others then
+            GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                    text_var2 = PG_EXCEPTION_HINT;
+           RAISE NOTICE 'Message Error:%',text_var1;
+           RAISE NOTICE 'Hint:%',text_var2;
+           Return 0;
+   
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.sucursalcajero(
+  cedula integer)
+    RETURNS TABLE(pnombre character varying, papellido1 character varying, papellido2 character varying, snombre character varying) 
+    
+
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+    Prol varchar(15);
+BEGIN
+  SELECT R.nombre INTO Prol FROM Roles AS R INNER JOIN RolesxPersonas AS RP ON RP.idrol=R.idrol WHERE RP.idcedula=Cedula;
+  IF Prol='cajero' THEN
+      RETURN QUERY SELECT P.nombre,P.apellido1,P.apellido2,S.nombre 
+        FROM (Personas AS P INNER JOIN PersonasxSucursales as PS ON P.idcedula=PS.idcedula) INNER JOIN Sucursales AS S ON S.idsucursal=PS.idsucursal
+        WHERE P.idcedula=cedula;
+    ELSE
+      Raise Notice 'Rol%',Prol;
+    END IF;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.validcajerologin(
+  cedula integer,
+  pcontrasena character varying,
+  pdinero integer)
+    RETURNS boolean
+    
+AS $$
+DECLARE
+  rol_name Roles.Nombre%TYPE;
+BEGIN
+  SELECT R.Nombre INTO rol_name FROM (Personas as P INNER JOIN RolesxPersonas as RP ON P.idcedula=RP.idcedula)
+    INNER JOIN Roles as R ON R.idrol=RP.idrol WHERE R.nombre='cajero' AND P.idcedula=cedula AND P.contrasena=pcontrasena AND P.logicdelete=False;
+    IF rol_name='cajero' THEN
+      /*insert into cajas(fechainicial,fechafinal,dineroinicial,dinerofinal)
+        values(now()::date, now()::date,pdinero,pdinero);*/
+      Return True;
+    ELSE
+      Return False;
+    END IF;           
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+
+CREATE OR REPLACE FUNCTION public.validclientelogin(
+  cedula integer)
+    RETURNS boolean
+    
+
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+    rol_name varchar(15);
+BEGIN
+  SELECT R.nombre INTO rol_name 
+    FROM (Roles AS R INNER JOIN RolesxPersonas AS RP ON RP.idrol=R.idrol) INNER JOIN Personas AS P ON P.idcedula=RP.idcedula 
+    WHERE P.idcedula=cedula AND P.logicdelete=0;
+    IF rol_name='cliente' THEN
+      Return True;
+    ELSE
+      Return False;
+    END IF;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$$LANGUAGE 'plpgsql';
+
+
+CREATE OR REPLACE FUNCTION public.validsupervisorlogin(
+  cedula integer,
+  pcontrasena character varying)
+    RETURNS boolean
+    
+AS $$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+    rol_name varchar(15);
+BEGIN
+  SELECT R.nombre INTO rol_name 
+    FROM (Roles AS R INNER JOIN RolesxPersonas AS RP ON RP.idrol=R.idrol) INNER JOIN Personas AS P ON P.idcedula=RP.idcedula 
+    WHERE P.idcedula=cedula AND P.contrasena=Pcontrasena AND P.logicdelete=0;
+    IF rol_name='supervisor' THEN
+      Return True;
+    ELSE
+      Return False;
+    END IF;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$$LANGUAGE 'plpgsql';
