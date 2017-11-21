@@ -592,3 +592,135 @@ BEGIN
 END;
 
 $$LANGUAGE 'plpgsql';
+
+CREATE OR REPLACE FUNCTION public.deleteclient(
+	Cedula int)
+    RETURNS boolean
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+    UPDATE Personas SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE PersonasxDistritos SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE FacturasxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE RolesxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.deleteemployee(
+	Cedula int)
+    RETURNS boolean
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+    UPDATE Personas SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE PersonasxDistritos SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE CajasxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE PersonasxSucursales SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE FacturasxCajeros SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE RolesxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.deletesucursal(
+	Id_sucursal int)
+    RETURNS boolean
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+    UPDATE Sucursales SET logicdelete=true WHERE idsucursal=id_sucursal;
+    UPDATE SucursalesxCompanias SET logicdelete=true WHERE idsucursal=id_sucursal;
+    UPDATE SucursalesxDistritos SET logicdelete=true WHERE idsucursal=id_sucursal;
+    UPDATE PersonasxSucursales SET logicdelete=true WHERE idsucursal=id_sucursal;
+    UPDATE CajasxSucursales SET logicdelete=true WHERE idsucursal=id_sucursal;
+    UPDATE FacturasxSucursales SET logicdelete=true WHERE idsucursal=id_sucursal;
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.deleteproveedor(
+	Id_proveedor int)
+    RETURNS boolean
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+    UPDATE Proveedores SET logicdelete=true WHERE idproveedor=id_proveedor;
+    UPDATE ProductosxProveedores SET logicdelete=true WHERE idproveedor=id_proveedor;
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$BODY$;
+
+CREATE OR REPLACE FUNCTION public.deleteproducto(
+	Id_producto int)
+    RETURNS boolean
+    LANGUAGE 'plpgsql'
+
+AS $BODY$
+
+DECLARE
+  text_var1 text;
+    text_var2 text;
+BEGIN
+    UPDATE Productos SET logicdelete=true WHERE idproducto=id_producto;
+    UPDATE ProductosxSucursales SET logicdelete=true WHERE idproducto=id_producto;
+    UPDATE ProductosxFacturas SET logicdelete=true WHERE idproducto=id_producto;
+    UPDATE ProductosxProveedores SET logicdelete=true WHERE idproducto=id_producto;
+    Return True;
+    EXCEPTION WHEN others then
+             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                     text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$BODY$;
