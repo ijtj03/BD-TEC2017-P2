@@ -75,6 +75,7 @@
     <None Include="packages.config" />
     <Content Include="rsc\imgs\Thumbs.db" />
     <Content Include="rsc\vids\Thumbs.db" />
+    <Content Include="Scripts - Web\Scripts - Caja\AddFactura.js" />
     <Content Include="Scripts\version.json" />
     <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular.min.js.map" />
@@ -89,6 +90,7 @@
     <Content Include="Scripts\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular-aria.min.js.map" />
     <Content Include="Scripts\angular-animate.min.js.map" />
+    <None Include="Properties\PublishProfiles\Proyecto2Web - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

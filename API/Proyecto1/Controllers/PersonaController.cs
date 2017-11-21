@@ -59,6 +59,14 @@ namespace Proyecto1.Controllers
         }
 
 
+        [HttpGet]
+        [Route("VerificarCliente")]
+        public IHttpActionResult VerificarCliente(int id)
+        {
+            PersonaService con = new PersonaService();
+            return Ok(con.VerificarCliente(id));
+        }
+
 
     }
 }

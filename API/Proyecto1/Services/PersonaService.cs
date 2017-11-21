@@ -324,6 +324,55 @@ namespace Proyecto1.Services
 
         }
 
+        public Boolean VerificarCliente(int id)
+        {
+            Boolean ans = false;
+            try
+            {
+                NpgsqlConnection conn;
+                NpgsqlCommand command;
+                NpgsqlDataReader read;
+
+                List<Persona> l = new List<Persona>();
+
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                command = new NpgsqlCommand("select personas.idcedula from personas inner join rolesxpersonas on personas.idcedula = rolesxpersonas.idcedula inner join roles on rolesxpersonas.idrol = roles.idrol where roles.nombre = 'cliente'", conn);
+                command.CommandType = CommandType.Text;
+
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    Persona p = new Persona();
+
+                    p.IdCedula = Convert.ToInt32(read["idcedula"]);
+                    l.Add(p);
+                   
+                }
+
+
+                foreach(var i in l)
+                {
+                    if (id == i.IdCedula)
+                    {
+                        ans = true;
+                    }
+                }
+
+
+                conn.Close();
+                return ans;
+
+            }
+            catch
+            {
+
+                return ans;
+            }
+        }
+
 
     }
 }

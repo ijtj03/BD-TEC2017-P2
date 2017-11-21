@@ -1,23 +1,15 @@
 // JavaScript source code
 
-var logincaja = angular.module("LoginCaja", ['ui.router']);
+var logincaja = angular.module("LoginCaja", ['ui.router','oc.lazyLoad']);
 
-logincaja.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
-
-    $urlRouterProvider.otherwise('/login');
-
-    $stateProvider
-        .state('factura', {
-           url: '/addFactura',
-           templateUrl: '/Caja/addFactura.html',
-           location: true,
-        })
-        
+logincaja.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $ocLazyLoadProvider) {
+ 
 
 }]);
 
-logincaja.controller('LoginCaja', function ($scope, $http, $state) {
+logincaja.controller('LoginCajaController', function ($scope, $http, $state) {
 
+    window.localStorage.clear();
     const url = "http://api-bd-tec2017-p2.azurewebsites.net/api/"
 
 
@@ -32,7 +24,10 @@ logincaja.controller('LoginCaja', function ($scope, $http, $state) {
                     var r = response.data;
 
                     if (r == true) {
-                        $state.go('factura');
+                        window.localStorage.setItem("idcajero", id);
+                        console.log("idcajero", window.localStorage.getItem("idcajero"));
+                        //window.location = "http://proyecto2web.azurewebsites.net/Caja/addFactura.html";
+                        window.location= "http://localhost:61087/Caja/addFactura.html";
                     } else {
                         window.alert("Su username o password no coinciden con los esperados")
                     }

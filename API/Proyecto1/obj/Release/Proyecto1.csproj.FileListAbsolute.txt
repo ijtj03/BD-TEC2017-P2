@@ -85,3 +85,16 @@ C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\obj\Release\Proyec
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\obj\Release\Proyecto1.csproj.CoreCompileInputs.cache
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\obj\Release\Proyecto1.dll
 C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\obj\Release\Proyecto1.pdb
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\esteb\OneDrive\Documents\BD-TEC2017-P2\API\Proyecto1\bin\stdole.dll

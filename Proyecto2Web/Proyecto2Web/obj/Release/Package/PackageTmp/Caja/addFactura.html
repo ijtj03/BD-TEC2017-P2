@@ -1,0 +1,115 @@
+﻿<!DOCTYPE HTML>
+
+<html ng-app="AddFactura">
+
+<head>
+
+	<title>Agregar Factura</title>
+
+
+
+	<!-- comentario: etiquetas META descriptiva para nuestro sitio web-->
+
+	<meta charset='utf-8'><!-- Codificacion de documento para uso de caracteres-->
+
+	<meta name='description' content='Laboratorio #1 HTML5-CSS3'>
+
+	<meta name='keywords' content='HTML5,CSS3,JavaScript'>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script src="../Scripts/angular.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="../Scripts - Web/Scripts - Caja/AddFactura.js"></script>
+	<link rel="shortcut icon" href="html5.png" />
+
+
+
+	<link rel='stylesheet' href='../css/styles.css'>
+
+</head>
+
+
+
+<body>
+
+	<div ui-view id='page'>
+
+		<header>
+
+			<div id='logo'><img src="../rsc/imgs/bot.png" alt="picture" width="190" /></div>
+
+			<nav id='menu'>
+
+				<ul>
+
+					<li><a href='login.html' title="LOGIN">CIERRE DE CAJA</a></li>
+
+
+				</ul>
+
+			</nav>
+
+		</header>
+
+
+
+		<section id='main'>
+
+			<br></br>
+
+			<section ng-controller="AddFacturaController">
+				<div>
+					<center><h2>INFORMACION GENERAL</h2></center>
+					<div class="col-sm-0" style="background-color:aliceblue;">
+						<br><br>
+						<center><h3>Sucursal: {{infocajero.Sucursal}}</h3></center>
+						<center><h3>Cajero: {{infocajero.Nombre}} {{infocajero.Apellido1}} {{infocajero.Apellido2}}</h3></center>
+						<br><br>
+					</div>
+				</div>
+				<div>
+					<center><h2>CLIENTE</h2></center>
+					<div class="col-sm-0" style="background-color:aliceblue;">
+						<br><br>
+						<center>
+							<div class="form-group">
+								<h3>Numero de Cedula</h3>
+								<input type="number" class="form-control" id="cedula">
+							</div>
+							<button type="button" class="btn btn-default">Verificar Cliente</button>
+							<button type="button" class="btn btn-default">Registrar Cliente</button>
+							<div class="checkbox">
+								<label><input type="checkbox"> Usuario sin registro</label>
+							</div>
+						</center>
+						<br><br>
+					</div>
+				</div>
+				<div>
+					<br /><br />
+					<br /><br />
+					<center><button type="button" class="btn btn-default">Crear Factura</button></center>
+					<br /><br />
+					<br /><br />
+				</div>
+			</section>
+
+		</section>
+
+
+
+	</div>
+
+
+
+</body>
+
+</html>
