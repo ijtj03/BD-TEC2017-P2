@@ -577,7 +577,7 @@ DECLARE
 BEGIN
   SELECT R.nombre INTO rol_name 
     FROM (Roles AS R INNER JOIN RolesxPersonas AS RP ON RP.idrol=R.idrol) INNER JOIN Personas AS P ON P.idcedula=RP.idcedula 
-    WHERE P.idcedula=cedula AND P.contrasena=Pcontrasena AND P.logicdelete=0;
+    WHERE P.idcedula=cedula AND P.contrasena=Pcontrasena AND P.logicdelete=false;
     IF rol_name='supervisor' THEN
       Return True;
     ELSE

@@ -38,10 +38,10 @@ namespace Proyecto1.Controllers
 
         [HttpGet]
         [Route("BorrarProducto")]
-        public IHttpActionResult BorrarProducto(int idfactura, int idproducto, int cantidad)
+        public IHttpActionResult BorrarProducto(int idfactura, int idproducto)
         {
             ProductoService con = new ProductoService();
-            return Ok(con.BorrarProducto(idfactura, idproducto, cantidad));
+            return Ok(con.BorrarProducto(idfactura, idproducto));
         }
 
         [HttpGet]

@@ -129,7 +129,7 @@ namespace Proyecto1.Services
         }
 
 
-        public Boolean BorrarProducto(int idfactura, int idproducto, int cantidad)
+        public Boolean BorrarProducto(int idfactura, int idproducto)
         {
             Boolean ans = false;
             try
@@ -147,18 +147,17 @@ namespace Proyecto1.Services
                 NpgsqlParameter IdProducto = new NpgsqlParameter("pIdProducto", NpgsqlTypes.NpgsqlDbType.Integer);
                 IdProducto.Value = idproducto;
 
-                NpgsqlParameter Cantidad = new NpgsqlParameter("pCantidad", NpgsqlTypes.NpgsqlDbType.Integer);
-                Cantidad.Value = cantidad;
+                
 
 
 
 
-                command = new NpgsqlCommand("select * from deleteproduct(:pIdFactura ,:pIdProducto , :pCantidad)", conn);
+                command = new NpgsqlCommand("select * from deleteproduct(:pIdFactura ,:pIdProducto )", conn);
                 command.CommandType = CommandType.Text;
 
                 command.Parameters.Add(IdFactura);
                 command.Parameters.Add(IdProducto);
-                command.Parameters.Add(Cantidad);
+               
 
 
                 var a = command.ExecuteScalar();

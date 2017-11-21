@@ -60,8 +60,8 @@ addfactura.controller('AddClienteController', function ($scope, $http) {
 
                 .then(function successCallback(response) {
                     if (response.data) {
-                        //window.location = "http://proyecto2web.azurewebsites.net/Caja/addFactura.html";
-                        window.location = "http://localhost:61087/Caja/addFactura.html";
+                        window.location = "http://proyecto2web.azurewebsites.net/Caja/addFactura.html";
+                        //window.location = "http://localhost:61087/Caja/addFactura.html";
                     }
                     else {
                         window.alert("Ha ocurrido un error");

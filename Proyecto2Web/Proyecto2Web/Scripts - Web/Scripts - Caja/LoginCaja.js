@@ -26,8 +26,8 @@ logincaja.controller('LoginCajaController', function ($scope, $http, $state) {
                     if (r == true) {
                         window.localStorage.setItem("idcajero", id);
                         console.log("idcajero", window.localStorage.getItem("idcajero"));
-                        //window.location = "http://proyecto2web.azurewebsites.net/Caja/addFactura.html";
-                        window.location= "http://localhost:61087/Caja/addFactura.html";
+                        window.location = "http://proyecto2web.azurewebsites.net/Caja/addFactura.html";
+                        //window.location= "http://localhost:61087/Caja/addFactura.html";
                     } else {
                         window.alert("Su username o password no coinciden con los esperados")
                     }

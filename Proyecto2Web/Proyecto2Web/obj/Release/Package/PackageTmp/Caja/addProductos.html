@@ -83,13 +83,13 @@
                 <div>
                     <center><h2>PRODUCTOS</h2></center>
                     <div class="row" >
-                        <div class="col-sm-0" style="background-color:aliceblue;"><!-- comentario: esto es un ng repeat-->
+                        <div class="col-sm-0" style="background-color:aliceblue;" ng-repeat="x in productos"><!-- comentario: esto es un ng repeat-->
                             <br><br>
                             <center>
-                                <h4 class="list-group-item-text">Producto: Numero de Producto</h4>
-                                <h4 class="list-group-item-text">Cantidad: Cantidad de productos</h4>
-                                <h4 class="list-group-item-text">Precio por unidad: Precio</h4>
-                                <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-trash-o"></i></button>
+                                <h4 class="list-group-item-text">Producto:{{x.Nombre}} </h4>
+                                <h4 class="list-group-item-text">Cantidad: {{x.Cantidad}}</h4>
+                                <h4 class="list-group-item-text">Precio: {{x.Cantidad * x.Precio}}</h4>
+                                <button type="button" class="btn btn-danger btn-circle" ng-click="BorrarProducto(x.IdProducto)">Eliminar</i></button>
                             </center>
                             <br><br>
                         </div>
@@ -111,9 +111,24 @@
                     </center>
                 </div>
                 <div>
+                    <center><h2>TOTAL</h2></center>
+                    <div class="row">
+                        <div class="col-sm-0" style="background-color:aliceblue;">
+                            <!-- comentario: esto es un ng repeat-->
+                            <br><br>
+                            <center>
+                                <button type="button" ng-click="Total()" class="btn btn-default">Calcular Total</button>
+                                <h3>{{total}}</h3>
+                            </center>
+                            <br><br>
+                        </div>
+                    </div>
+                </div>
+                <div>
                     <br /><br />
                     <br /><br />
-                    <center><button type="button" class="btn btn-default">Terminar Factura</button></center>
+                    <center><button type="button" class="btn btn-default" ng-click="TerminarFactura()">Terminar Factura</button></center>
+                    
                     <br /><br />
                     <br /><br />
                 </div>

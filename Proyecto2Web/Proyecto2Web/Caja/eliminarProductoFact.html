@@ -23,13 +23,16 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+
     <script src="../Scripts/angular.js"></script>
+
+    <script src="../Scripts - Web/Scripts - Caja/ValidarSupervisor.js"></script>
 
     <script src="../Scripts/angular-route.js"></script>
 
     <link rel="shortcut icon" href="html5.png" />
 
-
+    <script src="../Scripts - Web/Scripts - Caja/AddFactura.js"></script>
 
     <link rel='stylesheet' href='../css/styles.css'>
 
@@ -37,7 +40,7 @@
 
 
 
-<body>
+<body ng-controller="ValidarSupervisorController">
 
     <div id='page'>
 
@@ -54,12 +57,12 @@
             <br></br>
 
             <section>
-                <div>
+                <div >
                     <center><h2>INFORMACION GENERAL</h2></center>
                     <div class="col-sm-0" style="background-color:aliceblue;">
                         <br><br>
-                        <center><h3>Sucursal Nombre</h3></center>
-                        <center><h3>Cajero Nombre</h3></center>
+                        <center><h3>Sucursal: {{infocajero.Sucursal}}</h3></center>
+                        <center><h3>Cajero: {{infocajero.Nombre}} {{infocajero.Apellido1}} {{infocajero.Apellido2}}</h3></center>
                         <br><br>
                     </div>
                 </div>
