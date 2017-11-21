@@ -60,7 +60,7 @@ namespace Proyecto1.Controllers
 
             NpgsqlDataAdapter adapter = new NpgsqlDataAdapter(command);
             adapter.Fill(ds, "Cantones");
-            rd.Load("C:\\Users\\Jeison\\Documents\\Git\\BD-TEC2017-P2\\API\\Proyecto1\\CrystalReport1.rpt");
+            rd.Load(System.Web.Hosting.HostingEnvironment.MapPath("~/CrystalReport1.rpt"));
             rd.SetDataSource(ds);
             using (var stream = rd.ExportToStream(ExportFormatType.PortableDocFormat))
             {
