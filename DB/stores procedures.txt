@@ -111,6 +111,7 @@ AS $$
 DECLARE
   text_var1 text;
     text_var2 text;
+    id_proveedor integer;
 BEGIN
   INSERT INTO Proveedores(nombre,descripcion) VALUES(Pnombre,Pdescripcion);
   SELECT MAX(FS.idproveedor) INTO id_proveedor FROM Proveedores AS FS;
