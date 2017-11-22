@@ -724,3 +724,45 @@ BEGIN
 END;
 
 $BODY$;
+
+CREATE OR REPLACE FUNCTION public.updatepersona(
+	cedula integer,
+	fname character varying,
+	lname1 character varying,
+	lname2 character varying,
+	fecha date,
+	phone integer,
+	distrito character varying,
+	address character varying,
+	pcontrasena character varying,
+	SNombre varchar(15),
+	Rnombre varchar(15))
+    RETURNS boolean
+    LANGUAGE 'plpgsql'
+
+AS $Body$
+
+DECLARE
+	id_distrito Distritos.iddistrito%TYPE;
+    id_sucursal int;
+    id_rol int;
+    text_var1 text;
+  	text_var2 text;
+BEGIN
+	UPDATE Personas SET Nombre=Fname,Apellido1=Lname1,Apellido2=Lname2,FechaNacimiento=Fecha,Telefono=Phone,Contrasena=Pcontrasena WHERE idcedula=Cedula;
+    SELECT distritos.iddistrito INTO id_distrito FROM distritos WHERE distritos.nombre=Distrito;
+    UPDATE PersonasxDistritos SET iddistrito=id_distrito,Direccion=Address WHERE idcedula=Cedula;
+    SELECT Sucursales.idsucursal INTO id_sucursal FROM Sucursales WHERE Sucursales.nombre=Snombre;
+    UPDATE PersonasxSucursales SET idsucursal=id_sucursal WHERE idcedula=Cedula;
+    SELECT Roles.idrol INTO id_rol FROM Roles WHERE Roles.nombre=Rnombre;
+    UPDATE RolesxPersonas SET idrol=id_rol WHERE idcedula=Cedula;
+    Return True;
+    EXCEPTION WHEN others then
+            GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
+                                    text_var2 = PG_EXCEPTION_HINT;
+               RAISE NOTICE 'Message Error:%',text_var1;
+               RAISE NOTICE 'Hint:%',text_var2;
+               Return False;
+END;
+
+$Body$;

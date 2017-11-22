@@ -20,6 +20,13 @@ namespace Proyecto1.Controllers
             PersonaService con = new PersonaService();
             return Ok(con.sucursalcajero(id));
         }
+        [HttpPost]
+        [Route("UpdatePersona")]
+        public Boolean UpdatePersona([FromBody] Persona persona)
+        {
+            PersonaService con = new PersonaService();
+            return con.updatePersona(persona);
+        }
         [HttpGet]
         [Route("DeleteClient")]
         public Boolean DeleteClient(int id)
