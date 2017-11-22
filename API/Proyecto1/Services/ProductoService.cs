@@ -172,7 +172,35 @@ namespace Proyecto1.Services
                 return ans;
             }
         }
+        public Boolean DeleteProduct(int id)
+        {
+            NpgsqlConnection conn;
+            NpgsqlCommand command;
+            NpgsqlDataReader read;
+            Boolean ans = false;
+            try
+            {
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
 
+                command = new NpgsqlCommand("select * from deleteproducto(:pId)", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    ans = Convert.ToBoolean(read["deleteproducto"]);
+                }
+                read.Close();
+                conn.Close();
+                return ans;
+            }
+            catch
+            {
+                return ans;
+            }
+        }
         public Boolean CrearProducto ([FromBody] Producto producto)
         {
             Boolean ans = false;

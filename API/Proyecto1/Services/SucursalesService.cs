@@ -131,7 +131,36 @@ namespace Proyecto1.Services
             }
         }
 
+        public Boolean DeleteSucursal(int id)
+        {
+            NpgsqlConnection conn;
+            NpgsqlCommand command;
+            NpgsqlDataReader read;
+            Boolean ans = false;
+            try
+            {
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
 
+                command = new NpgsqlCommand("select * from deletesucursal(:pId)", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    ans = Convert.ToBoolean(read["deletesucursal"]);
+                }
+                read.Close();
+                conn.Close();
+                return ans;
+            }
+            catch
+            {
+                return ans;
+            }
+            
+        }
         public string GetReporte()
         {
             CrystalReport1 objRpt;

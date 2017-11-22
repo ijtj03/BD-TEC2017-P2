@@ -19,7 +19,13 @@ namespace Proyecto1.Controllers
             ProductoService con = new ProductoService();
             return con.UpdateProducto(id, nombre, des);
         }
-
+        [HttpGet]
+        [Route("DeleteProduct")]
+        public Boolean DeleteProduct(int id)
+        {
+            ProductoService con = new ProductoService();
+            return con.DeleteProduct(id);
+        }
         [HttpGet]
         [Route("AgregarProducto")]
         public IHttpActionResult AgregarProducto(int idfactura, int idproducto, int cantidad)

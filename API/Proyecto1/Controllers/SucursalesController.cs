@@ -46,6 +46,15 @@ namespace Proyecto1.Controllers
             SucursalesService con = new SucursalesService();
             return con.CrearSucursal(sucursal);
         }
+
+        [HttpGet]
+        [Route("DeleteSucursal")]
+        public Boolean DeleteSucursal(int id)
+        {
+            SucursalesService con = new SucursalesService();
+            return con.DeleteSucursal(id);
+        }
+
         [AllowAnonymous]
         [HttpGet]
         [Route("Report/SendReport")]

@@ -223,6 +223,35 @@ namespace Proyecto1.Services
 
 
         }
+        public Boolean DeleteProveedor(int id)
+        {
+            NpgsqlConnection conn;
+            NpgsqlCommand command;
+            NpgsqlDataReader read;
+            Boolean ans = false;
+            try
+            {
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                command = new NpgsqlCommand("select * from deleteproveedor(:pId)", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    ans = Convert.ToBoolean(read["deleteproveedor"]);
+                }
+                read.Close();
+                conn.Close();
+                return ans;
+            }
+            catch
+            {
+                return ans;
+            }
+        }
         public Boolean CrearEmpleado([FromBody] Persona empleado)
         {
 
@@ -352,7 +381,64 @@ namespace Proyecto1.Services
 
 
         }
+        public Boolean DeleteClient(int id)
+        {
+            NpgsqlConnection conn;
+            NpgsqlCommand command;
+            NpgsqlDataReader read;
+            Boolean ans = false;
+            try
+            {
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
 
+                command = new NpgsqlCommand("select * from deleteclient(:pId)", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    ans = Convert.ToBoolean(read["deleteclient"]);
+                }
+                read.Close();
+                conn.Close();
+                return ans;
+            }
+            catch
+            {
+                return ans;
+            }
+        }
+        public Boolean DeleteEmpleado(int id)
+        {
+            NpgsqlConnection conn;
+            NpgsqlCommand command;
+            NpgsqlDataReader read;
+            Boolean ans = false;
+            try
+            {
+                conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
+                conn.Open();
+
+                command = new NpgsqlCommand("select * from deleteemployee(:pId)", conn);
+                command.CommandType = CommandType.Text;
+                command.Parameters.AddWithValue("pId", id);
+                read = command.ExecuteReader();
+
+                while (read.Read())
+                {
+                    ans = Convert.ToBoolean(read["deleteemployee"]);
+                }
+                read.Close();
+                conn.Close();
+                return ans;
+            }
+            catch
+            {
+                return ans;
+            }
+        }
         public Boolean VerificarCliente(int id)
         {
             Boolean ans = false;

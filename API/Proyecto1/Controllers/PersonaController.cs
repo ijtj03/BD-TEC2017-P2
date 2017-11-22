@@ -21,6 +21,20 @@ namespace Proyecto1.Controllers
             return Ok(con.sucursalcajero(id));
         }
         [HttpGet]
+        [Route("DeleteClient")]
+        public Boolean DeleteClient(int id)
+        {
+            PersonaService con = new PersonaService();
+            return con.DeleteClient(id);
+        }
+        [HttpGet]
+        [Route("DeleteEmpleado")]
+        public Boolean DeleteEmpleado(int id)
+        {
+            PersonaService con = new PersonaService();
+            return con.DeleteEmpleado(id);
+        }
+        [HttpGet]
         [Route("ValidCajero")]
         public IHttpActionResult ValidCajero(int id, string contrasena,int money)
         {
@@ -72,7 +86,12 @@ namespace Proyecto1.Controllers
             PersonaService con = new PersonaService();
             return Ok(con.VerificarCliente(id));
         }
-
-
+        [HttpGet]
+        [Route("DeleteProveedor")]
+        public Boolean DeleteProveedor(int id)
+        {
+            PersonaService con = new PersonaService();
+            return con.DeleteProveedor(id);
+        }
     }
 }

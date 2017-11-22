@@ -606,7 +606,7 @@ DECLARE
 BEGIN
     UPDATE Personas SET LogicDelete=True WHERE idcedula=Cedula;
     UPDATE PersonasxDistritos SET LogicDelete=True WHERE idcedula=Cedula;
-    UPDATE FacturasxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE FacturasxPersonas SET LogicDelete=B'1' WHERE idcedula=Cedula;
     UPDATE RolesxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
     Return True;
     EXCEPTION WHEN others then
@@ -634,7 +634,7 @@ BEGIN
     UPDATE PersonasxDistritos SET LogicDelete=True WHERE idcedula=Cedula;
     UPDATE CajasxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
     UPDATE PersonasxSucursales SET LogicDelete=True WHERE idcedula=Cedula;
-    UPDATE FacturasxCajeros SET LogicDelete=True WHERE idcedula=Cedula;
+    UPDATE FacturasxCajeros SET LogicDelete=B'1' WHERE idcedula=Cedula;
     UPDATE RolesxPersonas SET LogicDelete=True WHERE idcedula=Cedula;
     Return True;
     EXCEPTION WHEN others then
