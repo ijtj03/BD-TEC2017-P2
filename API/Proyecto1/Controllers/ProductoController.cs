@@ -74,6 +74,14 @@ namespace Proyecto1.Controllers
             return Ok(con.CrearFactura(factura));
         }
 
+        [HttpPost]
+        [Route("CrearProducto")]
+        public IHttpActionResult CrearProducto([FromBody]Producto pr)
+        {
+            ProductoService con = new ProductoService();
+            return Ok(con.CrearProducto(pr));
+        }
+
 
     }
 }

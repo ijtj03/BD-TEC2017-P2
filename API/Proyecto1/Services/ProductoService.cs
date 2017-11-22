@@ -213,23 +213,16 @@ namespace Proyecto1.Services
                 conn = new NpgsqlConnection("Host=p2tec-bd.postgres.database.azure.com;Database=Proyecto2;Persist Security Info=True;Username=tecbdadmin@p2tec-bd;Password=2t0e1c7BD;Trust Server Certificate=True;SSL Mode=Require");
                 conn.Open();
 
-                NpgsqlParameter Nombre = new NpgsqlParameter("pNombre", NpgsqlTypes.NpgsqlDbType.Integer);
+                NpgsqlParameter Nombre = new NpgsqlParameter("pNombre", NpgsqlTypes.NpgsqlDbType.Varchar);
                 Nombre.Value = producto.Nombre;
-
-                NpgsqlParameter IdProducto = new NpgsqlParameter("pIdProducto", NpgsqlTypes.NpgsqlDbType.Integer);
-                IdProducto.Value = producto.IdProducto;
-
+                
                 NpgsqlParameter Descripcion = new NpgsqlParameter("pDescripcion", NpgsqlTypes.NpgsqlDbType.Varchar);
                 Descripcion.Value = producto.Descripcion;
 
-
-
-
-                command = new NpgsqlCommand("select * from createproduct(:pNombre ,:pDescripcion , :pIdProducto)", conn);
+                command = new NpgsqlCommand("select * from createproduct(:pNombre ,:pDescripcion)", conn);
                 command.CommandType = CommandType.Text;
 
                 command.Parameters.Add(Nombre);
-                command.Parameters.Add(IdProducto);
                 command.Parameters.Add(Descripcion);
 
 

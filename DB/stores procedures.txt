@@ -112,8 +112,9 @@ DECLARE
   text_var1 text;
     text_var2 text;
 BEGIN
-  INSERT INTO Proveedores(nombre,descripcion,codigo_ean) VALUES(Pnombre,Pdescripcion,EAN);
-    Return True;
+  INSERT INTO Proveedores(nombre,descripcion) VALUES(Pnombre,Pdescripcion);
+  SELECT MAX(FS.idproveedor) INTO id_proveedor FROM Proveedores AS FS;
+  insert into productosxproveedores(idproducto,idproveedor,precio) values(EAN,id_proveedor,500);    Return True;
     EXCEPTION WHEN others then
             GET STACKED DIAGNOSTICS text_var1 = MESSAGE_TEXT,
                                     text_var2 = PG_EXCEPTION_HINT;
@@ -144,7 +145,7 @@ DECLARE
     text_var2 text;
 BEGIN
   SELECT companias.idcompania INTO id_compania FROM companias WHERE companias.nombre=Cnombre;
-    INSERT INTO Sucursales(Nombre,iddireccion,administrador) VALUES (Snombre,1,idadministrador) RETURNING idsucursal INTO id_sucursal;
+    INSERT INTO Sucursales(Nombre,administrador) VALUES (Snombre,idadministrador) RETURNING idsucursal INTO id_sucursal;
     SELECT distritos.iddistrito INTO id_distrito FROM distritos WHERE distritos.nombre=Distrito;
     INSERT INTO SucursalesxDistritos(idsucursal,iddistrito,Direccion) VALUES(id_sucursal,id_distrito,Address);
     INSERT INTO SucursalesxCompanias(idsucursal,idcompania) VALUES(id_sucursal,id_compania);
